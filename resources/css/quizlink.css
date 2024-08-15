@@ -1,0 +1,12 @@
+
+.quiz_link_header {
+    background-color: #10a19d;
+    border-radius: 8px;
+    color: white;
+
+}
+.sidebar_link{
+    font-weight: bold;
+    text-decoration: underline;
+    color: blue;
+}
