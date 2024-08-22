@@ -72,7 +72,7 @@
     /* top: 0; */
     left: 0;
     justify-content: left;
-    justify-items: start;
+    justify-items: flex-start;
     gap: 5rem;
     overflow-y: scroll;
 }

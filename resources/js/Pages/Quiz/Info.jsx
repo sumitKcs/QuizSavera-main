@@ -9,7 +9,7 @@ export default function Info({ quizCards }) {
     return (
         <div className="info_container">
             <Head title="Quiz Info" />
-            <QuizHeader />
+            {/* <QuizHeader /> */}
             <QuizNav />
             <QuizAlert />
             <QuizLayout quiz_Cards={quizCards}>

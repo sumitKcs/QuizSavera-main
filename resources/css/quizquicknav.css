@@ -2,7 +2,7 @@
     width: 20rem;
     display: none;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     justify-items: center;
     align-self: center;
     position: fixed;

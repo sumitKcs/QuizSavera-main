@@ -24,7 +24,6 @@
 }
 .card_text_cont {
     width: 70%;
-    text-align: justify;
 }
 .category_and_keywords {
     display: flex;

@@ -20,8 +20,8 @@
 header {
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    justify-items: start;
+    justify-content: flex-start;
+    justify-items: flex-start;
     font-family: "Poppins", sans-serif;
 }
 
@@ -111,7 +111,7 @@ header select option {
 .header2 nav {
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: flex-start;
     justify-items: center;
     background: var(--primary-color);
 }
@@ -152,7 +152,7 @@ header select option {
 
     .mobile_menu {
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         align-items: center;
     }
 
@@ -166,7 +166,7 @@ header select option {
         left: 0;
         display: none;
         justify-content: left;
-        justify-items: start;
+        justify-items: flex-start;
         padding: 0.5rem 1.5rem;
         gap: 5rem;
         color: white;
@@ -185,7 +185,7 @@ header select option {
     .side_navigation_col1 {
         display: flex;
         flex-direction: column;
-        justify-content: start;
+        justify-content: flex-start;
         width: 100%;
         height: 100%;
         overflow-y: scroll;

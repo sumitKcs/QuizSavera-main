@@ -26,14 +26,15 @@ const QuizCard = ({ quiz_Cards }) => {
             {displayedItems.map((elem) => {
                 return (
                     <article
-                        // key={elem.id}
+                        key={elem.id}
                         itemscope=""
                         itemtype="http://schema.org/BlogPosting"
-                        className="border flex flex-col gap-4 sm:gap-6 material_shadow blog_card" // Fixed error: replaced 'class' with 'className' and added Tailwind CSS classes
-                        style={articleStyle} // Fixed error: added articleStyle variable to style attribute
+                        className="h-fit flex flex-col gap-2 material_shadow border border-black" 
+                        style={articleStyle}
                     >
-                        <a
-                            className="flex flex-col gap-2"
+                       <span>
+                       <a
+                            className="flex flex-col gap-0"
                             href="/blog"
                             style={{ width: "100%" }}
                         >
@@ -44,17 +45,17 @@ const QuizCard = ({ quiz_Cards }) => {
                                 {elem.CardHeader}
                             </h1>
                             <div
-                                className="flex items-left gap-4"
+                                className="flex items-left gap-1"
                                 style={{ paddingLeft: "5px" }}
                             >
                                 <img
                                     src="calendar.png"
                                     alt="published_date"
                                     width="15px"
-                                    className="self-center" // Fixed error: replaced 'class' with 'className'
+                                    className="self-center"
                                 />
                                 <span className="published_date">
-                                    <span>Published on</span>
+                                    <span>Published on </span>
                                     <time
                                         itemprop="datePublished"
                                         datetime="2023-11-03"
@@ -64,19 +65,21 @@ const QuizCard = ({ quiz_Cards }) => {
                                 </span>
                             </div>
                         </a>
+                       </span>
 
-                        <div className="flex gap-4 items">
-                            <div className="card_img_cont">
-                                <a href="/blog">
+                        <div className="flex gap-4 h-32">
+                            <div className="w-[25%]">
+                                <a href="/blog" className="size-full">
                                     <img
                                         itemprop="image"
                                         src={`${elem.CardImg}`}
                                         alt={elem.CardImgDesc}
-                                        className="card_img"
+                                        className="size-full object-cover aspect-video"
+                                        // style={{height:"100px"}}
                                     />
                                 </a>
                             </div>
-                            <div className="card_text_cont border">
+                            <div className="card_text_cont text-pretty lg:text-justify">
                                 <p
                                     itemprop="articleBody"
                                     className="line-clamp-5"
@@ -85,7 +88,8 @@ const QuizCard = ({ quiz_Cards }) => {
                                 </p>
                             </div>
                         </div>
-                        <div className="category_and_keywords">
+
+                        <div className="flex flex-col md:flex-row md:justify-between">
                             <p>
                                 Categories:
                                 <span

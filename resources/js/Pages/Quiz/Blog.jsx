@@ -9,7 +9,7 @@ export default function Questions() {
     return (
         <div className="info_container">
             <Head title="Quiz Info" />
-            <QuizHeader />
+            {/* <QuizHeader /> */}
             <QuizNav />
             <QuizAlert />
             <QuizLayout>
