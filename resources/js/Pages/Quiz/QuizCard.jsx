@@ -127,7 +127,7 @@ const QuizCard = ({ quiz_Cards }) => {
                                 Keyword1, Keyword2, Keyword3
                             </p>
                         </div>
-                        <QuizIconGroup />
+                        {/* <QuizIconGroup /> */}
                     </article>
                 );
             })}
