@@ -7,7 +7,7 @@ import QuizCard from "./QuizCard";
 export default function Info({ quizCards }) {
     return (
         <div className="info_container">
-            <Head title="Quiz Info" />
+            <Head title="Quiz Savera|Blog" />
             {/* <QuizHeader /> */}
             <QuizNav />
             <QuizAlert />
