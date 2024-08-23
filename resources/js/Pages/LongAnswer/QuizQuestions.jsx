@@ -40,9 +40,11 @@ const QuizQuestions = () => {
             <div className="qq_header">
                 Long Answers
             </div>
-            {displayedItems.map((question, index) => (
-                <SingleQuizQuestion key={index} questionData={question} />
-            ))}
+            <div className="flex flex-col gap-10">
+                {displayedItems.map((question, index) => (
+                    <SingleQuizQuestion key={index} questionData={question} />
+                ))}
+            </div>
         </div>
     );
 };
