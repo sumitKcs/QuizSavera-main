@@ -17,12 +17,15 @@ class QuizController extends Controller
         'quizCards' => $quizCards,
     ]);
     }
-    public function questions(Request $request): Response
+    public function quiz(Request $request): Response
     {
         return Inertia::render('Quiz/Questions');
     }
     public function blog(Request $request): Response
     {
         return Inertia::render('Quiz/Blog');
+    }
+    public function longAnswer(Request $request): Response {
+        return Inertia::render('LongAnswer/Questions');
     }
 }

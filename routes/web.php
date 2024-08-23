@@ -31,8 +31,9 @@ use Inertia\Inertia;
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', [QuizController::class, 'info'])->name('quiz.info');
-Route::get('/questions', [QuizController::class, 'questions'])->name('quiz.questions');
 Route::get('/blog', [QuizController::class, 'blog'])->name('quiz.blog');
+Route::get('/quiz', [QuizController::class, 'quiz'])->name('quiz.index');
+Route::get('/longanswer', [QuizController::class, 'longAnswer'])->name('longAnswer.index');
 
 
 

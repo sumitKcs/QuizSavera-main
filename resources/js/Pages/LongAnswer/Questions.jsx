@@ -2,17 +2,19 @@ import { Head } from "@inertiajs/react";
 import QuizNav from "./Partials/QuizNav";
 import QuizAlert from "./Partials/QuizAlert";
 import QuizLayout from "./QuizLayout";
+import QuizHeader from "./QuizHeader";
 import "../../../css/info.css";
-import QuizCard from "./QuizCard";
-export default function Info({ quizCards }) {
+import QuizQuestions from "./QuizQuestions";
+
+export default function Questions() {
     return (
         <div className="info_container">
             <Head title="Quiz Info" />
-            {/* <QuizHeader /> */}
+            <QuizHeader />
             <QuizNav />
             <QuizAlert />
-            <QuizLayout quiz_Cards={quizCards}>
-                <QuizCard quiz_Cards={quizCards} />
+            <QuizLayout>
+                <QuizQuestions />
             </QuizLayout>
         </div>
     );
