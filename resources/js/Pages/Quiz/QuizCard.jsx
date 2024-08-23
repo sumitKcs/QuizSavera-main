@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import "../../../css/quizcard.css";
-import QuizIconGroup from "./QuizIconGroup";
+
 
 const QuizCard = ({ quiz_Cards }) => {
+    console.log("quizCards", quiz_Cards)
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 2; // Adjust this value as needed
 

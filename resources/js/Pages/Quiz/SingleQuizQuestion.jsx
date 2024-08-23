@@ -109,7 +109,7 @@ const SingleQuizQuestion = ({ questionData }) => {
             </div>
 
             {showAnswer && (
-                <div className="quiz_answer_content showAns">
+                <div className="hidden showAns">
                     <span style={{ fontWeight: "bold" }}>
                         <span>Answer: </span>
                         {questionData.quizAnswer}
@@ -121,7 +121,7 @@ const SingleQuizQuestion = ({ questionData }) => {
             )}
 
             {showReport && (
-                <div className="quiz_report_content showRpt">
+                <div className="hidden showRpt">
                     <textarea
                         name={`quiz_report_textarea_${questionData.id}`}
                         id={`quiz_report_textarea_${questionData.id}`}
@@ -129,14 +129,14 @@ const SingleQuizQuestion = ({ questionData }) => {
                         rows="3"
                         style={textareaStyle}
                     >
-                        What do you want to report about? Name: Email:
+                        What do you want to report about?
                     </textarea>
                     <button className="submit_btn">Submit</button>
                 </div>
             )}
 
             {showComment && (
-                <div className="quiz_comment_content showCmt">
+                <div className="hidden showCmt border">
                     <textarea
                         name={`quiz_comment_textarea_${questionData.id}`}
                         id={`quiz_comment_textarea_${questionData.id}`}

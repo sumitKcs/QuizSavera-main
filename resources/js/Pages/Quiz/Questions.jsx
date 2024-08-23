@@ -5,7 +5,7 @@ import QuizLayout from "./QuizLayout";
 import QuizHeader from "./QuizHeader";
 import "../../../css/info.css";
 import QuizQuestions from "./QuizQuestions";
-export default function Questions() {
+export default function Questions({ questions }) {
     return (
         <div className="info_container">
             <Head title="Quiz" />
@@ -13,7 +13,7 @@ export default function Questions() {
             <QuizNav />
             <QuizAlert />
             <QuizLayout>
-                <QuizQuestions />
+                <QuizQuestions questions={questions} />
             </QuizLayout>
         </div>
     );
