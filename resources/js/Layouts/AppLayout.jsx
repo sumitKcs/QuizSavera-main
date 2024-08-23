@@ -1,12 +1,12 @@
-import "../../../css/quizlayout.css";
-import QuizCarousel from "./Partials/QuizCarousel";
-import QuizLink from "./QuizLink";
-import QuizCard from "./QuizCard";
-import QuizFooter from "./QuizFooter";
-import QuizQuestions from "./QuizQuestions";
-import QuizQuickNav from './QuizQuickNav';
+import "../../css/quizlayout.css";
+import QuizCarousel from "@/Components/QuizCarousel";
+import QuizLink from "@/Components/QuizLink";
+import QuizFooter from "@/Components/QuizFooter";
+import QuizQuickNav from '@/Components/QuizQuickNav';
+import QuizNav from "@/Components/QuizNav";
+import QuizAlert from "@/Components/QuizAlert";
 
-const QuizLayout = ({ quiz_Cards = [], children }) => {
+const AppLayout = ({ children }) => {
     let lt_link = {
         header: "Current Affairs Quiz (1280)",
         link_array: [
@@ -55,25 +55,30 @@ const QuizLayout = ({ quiz_Cards = [], children }) => {
 
 
     return (
-        <main className="parent_container">
-            <QuizCarousel />
+        <>
+            {/* <QuizHeader /> */}
+            <QuizNav />
+            <QuizAlert />
+            <main className="parent_container">
+                <QuizCarousel />
 
-            <div className="page_content_container">
-                <div className="quiz_link" id="left_quiz_link">
-                    <QuizLink props={lt_link} />
-                    <QuizLink props={lb_link} />
+                <div className="page_content_container">
+                    <div className="quiz_link" id="left_quiz_link">
+                        <QuizLink props={lt_link} />
+                        <QuizLink props={lb_link} />
+                    </div>
+                    <div className="page_content">{children}</div>
+                    <div className="quiz_link">
+                        <QuizLink props={rt_link} />
+                        <QuizLink props={rb_link} />
+                    </div>
                 </div>
-                <div className="page_content">{children}</div>
-                <div className="quiz_link">
-                    <QuizLink props={rt_link} />
-                    <QuizLink props={rb_link} />
-                </div>
-            </div>
 
-            <QuizFooter />
-            <QuizQuickNav/>
-        </main>
+                <QuizFooter />
+                <QuizQuickNav />
+            </main>
+        </>
     );
 };
 
-export default QuizLayout;
+export default AppLayout;

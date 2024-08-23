@@ -9,25 +9,25 @@ const QuizAlert = () => {
                 <div className="flex items-center gap-7">
                     <div className="flex items-center ">
                         <span>
-                            <img src="New64.gif" alt="new icon" width="30px" />
+                            <img src="/New64.gif" alt="new icon" width="30px" />
                         </span>
                         <span>Hiring alert!</span>
                     </div>
                     <div className="flex items-center ">
                         <span>
-                            <img src="New64.gif" alt="new icon" width="30px" />
+                            <img src="/New64.gif" alt="new icon" width="30px" />
                         </span>
                         <span>Hiring alert!</span>
                     </div>
                     <div className="flex items-center ">
                         <span>
-                            <img src="New64.gif" alt="new icon" width="30px" />
+                            <img src="/New64.gif" alt="new icon" width="30px" />
                         </span>
                         <span>Hiring alert!</span>
                     </div>
                     <div className="flex items-center ">
                         <span>
-                            <img src="New64.gif" alt="new icon" width="30px" />
+                            <img src="/New64.gif" alt="new icon" width="30px" />
                         </span>
                         <span>Hiring alert!</span>
                     </div>

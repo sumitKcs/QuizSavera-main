@@ -3,7 +3,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../../../../css/quizcarousel.css";
+import "../../css/quizcarousel.css";
 
 function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -84,7 +84,7 @@ const QuizCarousel = () => {
                             >
                                 <span>
                                     <img
-                                        src="./defence-police.svg"
+                                        src="/defence-police.svg"
                                         alt="defence & police"
                                         width="30px"
                                     />
@@ -101,7 +101,7 @@ const QuizCarousel = () => {
                             >
                                 <span>
                                     <img
-                                        src="./defence-police.svg"
+                                        src="/defence-police.svg"
                                         alt="defence & police"
                                         width="30px"
                                     />
@@ -118,7 +118,7 @@ const QuizCarousel = () => {
                             >
                                 <span>
                                     <img
-                                        src="./defence-police.svg"
+                                        src="/defence-police.svg"
                                         alt="defence & police"
                                         width="30px"
                                     />
@@ -135,7 +135,7 @@ const QuizCarousel = () => {
                             >
                                 <span>
                                     <img
-                                        src="./defence-police.svg"
+                                        src="/defence-police.svg"
                                         alt="defence & police"
                                         width="30px"
                                     />
@@ -152,7 +152,7 @@ const QuizCarousel = () => {
                             >
                                 <span>
                                     <img
-                                        src="./defence-police.svg"
+                                        src="/defence-police.svg"
                                         alt="defence & police"
                                         width="30px"
                                     />
@@ -169,7 +169,7 @@ const QuizCarousel = () => {
                             >
                                 <span>
                                     <img
-                                        src="./defence-police.svg"
+                                        src="/defence-police.svg"
                                         alt="defence & police"
                                         width="30px"
                                     />
@@ -186,7 +186,7 @@ const QuizCarousel = () => {
                             >
                                 <span>
                                     <img
-                                        src="./defence-police.svg"
+                                        src="/defence-police.svg"
                                         alt="defence & police"
                                         width="30px"
                                     />

@@ -1,4 +1,5 @@
-import "../../../../css/header.css";
+import "../../css/header.css";
+
 const QuizNav = () => {
     return (
         <div className="header2 shadow">
@@ -13,7 +14,7 @@ const QuizNav = () => {
                 <a href="#">E-books</a>
                 <a href="#">Printed Books</a>
                 <a href="#" className="flex justify-center items-center gap-2 border border-black bg-[#4d4c7d] ml-5">
-                    <img src="google-play.png" alt="" width="20" height="30" />
+                    <img src="/google-play.png" alt="" width="20" height="30" />
                     <span
                         className=""
                     >
@@ -21,7 +22,7 @@ const QuizNav = () => {
                     </span>
                 </a>
             </nav>
-          
+
         </div>
     );
 };

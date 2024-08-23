@@ -1,7 +1,7 @@
-import "../../../css/quizheader.css";
+import "../../css/quizheader.css";
 import { useEffect } from "react";
-import QuizLink from "./QuizLink";
-import "../../../css/quizlink.css";
+import QuizLink from "QuizLink";
+import "../../css/quizlink.css";
 const QuizHeader = () => {
     useEffect(() => {
         const menuIcon = document.querySelector(".menu-icon");

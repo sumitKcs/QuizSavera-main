@@ -1,4 +1,4 @@
-import "../../../css/quizfooter.css";
+import "../../css/quizfooter.css";
 const QuizFooter = () => {
     let footerStyle = {
         padding: "2rem 0 5rem 0",
@@ -6,9 +6,9 @@ const QuizFooter = () => {
     let footerStyle2 = {
         color: "rgba(255, 255, 255, 0.9)",
         paddingBottom: "3rem",
-        display:"flex",
-        alignItems:"center",
-        justifyContent:"center"
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
     };
     return (
         <footer>

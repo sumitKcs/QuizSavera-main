@@ -1,4 +1,4 @@
-import "../../../css/quizlink.css";
+import "../../css/quizlink.css";
 const QuizLink = ({ props }) => {
     return (
         <div className="sidebar ">
@@ -16,7 +16,7 @@ const QuizLink = ({ props }) => {
                                 <div>
                                     <img
                                         className=""
-                                        src="./point.png"
+                                        src="/point.png"
                                         alt="finger_point"
                                         width="14px"
                                     />

@@ -1,6 +1,6 @@
 import { Head } from "@inertiajs/react";
-import QuizNav from "./Partials/QuizNav";
-import QuizAlert from "./Partials/QuizAlert";
+import QuizNav from "../../Components/QuizNav";
+import QuizAlert from "../../Components/QuizAlert";
 import QuizLayout from "./QuizLayout";
 import QuizHeader from "./QuizHeader";
 import "../../../css/info.css";

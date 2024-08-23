@@ -1,4 +1,4 @@
-import "../../../css/quizquicknav.css";
+import "../../css/quizquicknav.css";
 const QuizQuickNav = () => {
     return (
         <bottom_menu class="bottom_menu ">
