@@ -4,7 +4,7 @@ import { FaFacebook } from "react-icons/fa6";
 import { FaTelegram } from "react-icons/fa6";
 import { FaFacebookMessenger } from "react-icons/fa";
 import { AiFillPrinter } from "react-icons/ai";
-import "../../../css/quizicongroup.css";
+import "../../../../css/quizicongroup.css";
 const QuizIconGroup = () => {
     return (
         <div

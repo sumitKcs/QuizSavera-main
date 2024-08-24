@@ -5,6 +5,7 @@ import QuizFooter from "@/Components/QuizFooter";
 import QuizQuickNav from '@/Components/QuizQuickNav';
 import QuizNav from "@/Components/QuizNav";
 import QuizAlert from "@/Components/QuizAlert";
+import QuizHeader from "@/Components/QuizHeader";
 
 const AppLayout = ({ children }) => {
     let lt_link = {
@@ -56,8 +57,7 @@ const AppLayout = ({ children }) => {
 
     return (
         <>
-            {/* <QuizHeader /> */}
-            <QuizNav />
+            <QuizHeader />
             <QuizAlert />
             <main className="parent_container">
                 <QuizCarousel />
@@ -75,7 +75,7 @@ const AppLayout = ({ children }) => {
                 </div>
 
                 <QuizFooter />
-                <QuizQuickNav />
+                {/* <QuizQuickNav /> */}
             </main>
         </>
     );

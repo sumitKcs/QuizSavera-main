@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\QuizController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,7 +33,8 @@ use Inertia\Inertia;
 
 Route::get('/', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{id}', [BlogController::class, 'content'])->name('blog.content');
-// Route::get('/quiz', [BlogController::class, 'quiz'])->name('quiz.index');
+Route::get('/quiz', [QuizController::class, 'index'])->name('quiz.index');
+Route::get('/quiz/{cat_id}', [QuizController::class, 'getCat'])->name('quiz.getCat');
 // Route::get('/longanswer', [BlogController::class, 'longAnswer'])->name('longAnswer.index');
 
 

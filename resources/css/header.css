@@ -17,13 +17,6 @@
     --gap-sm: 0.5rem;
     --gap-xs: 0.2rem;
 }
-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    justify-items: flex-start;
-    font-family: "Poppins", sans-serif;
-}
 
 .header1 {
     width: 100vw !important;
@@ -54,7 +47,7 @@ header {
     color: black;
 }
 
-.header1 nav > a {
+.header1 nav>a {
     text-decoration: none;
     color: black;
 }
@@ -136,25 +129,12 @@ header select option {
 }
 
 @media only screen and (max-width: 640px) {
-    nav.items_left {
-        display: none;
-    }
 
-    .login {
-        display: none;
-    }
-
-    .logo {
-        grid-column: 2/3;
-        justify-content: center;
-        justify-items: center;
-    }
-
-    .mobile_menu {
+    /* .mobile_menu {
         display: flex;
         justify-content: flex-start;
         align-items: center;
-    }
+    } */
 
     aside {
         width: 300px;
@@ -164,11 +144,6 @@ header select option {
         position: fixed;
         top: 0;
         left: 0;
-        display: none;
-        justify-content: left;
-        justify-items: flex-start;
-        padding: 0.5rem 1.5rem;
-        gap: 5rem;
         color: white;
     }
 
@@ -222,6 +197,7 @@ header select option {
         /* border-bottom: 5px solid var(--primary-color); */
     }
 }
+
 .shadow {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

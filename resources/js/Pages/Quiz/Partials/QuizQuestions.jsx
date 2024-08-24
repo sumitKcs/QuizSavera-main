@@ -1,5 +1,5 @@
 
-import "../../../css/quizquestions.css";
+import "../../../../css/quizquestions.css";
 import SingleQuizQuestion from "./SingleQuizQuestion";
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";

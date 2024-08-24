@@ -1,4 +1,4 @@
-import "../../../css/quizquestions.css";
+import "../../../../css/quizquestions.css";
 import { useState } from "react";
 
 const SingleQuizQuestion = ({ questionData }) => {
