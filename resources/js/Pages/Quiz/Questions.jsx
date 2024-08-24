@@ -1,14 +1,14 @@
 import { Head } from "@inertiajs/react";
-import QuizLayout from "./QuizLayout";
 import "../../../css/info.css";
 import QuizQuestions from "./Partials/QuizQuestions";
+import AppLayout from "@/Layouts/AppLayout";
 export default function Questions({ questions }) {
     return (
         <>
             <Head title="Quiz" />
-            <QuizLayout>
+            <AppLayout>
                 <QuizQuestions questions={questions} />
-            </QuizLayout>
+            </AppLayout>
         </>
     );
 }

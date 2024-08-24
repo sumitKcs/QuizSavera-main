@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import "../../../css/quizcard.css";
-import QuizIconGroup from "./QuizIconGroup";
 
 const QuizCard = ({ quiz_Cards }) => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -9,18 +8,18 @@ const QuizCard = ({ quiz_Cards }) => {
 
     const handlePageChange = ({ selected }) => {
         setCurrentPage(selected + 1);
-        console.log("selected", selected + 1)
+        console.log("selected", selected + 1);
     };
 
-    const [displayedItems, setDisplayedItems] = useState([])
+    const [displayedItems, setDisplayedItems] = useState([]);
 
     useEffect(() => {
         const items = quiz_Cards.slice(
             currentPage * itemsPerPage,
             (currentPage + 1) * itemsPerPage
         );
-        setDisplayedItems(items)
-    }, [currentPage])
+        setDisplayedItems(items);
+    }, [currentPage]);
 
     let articleStyle = {
         width: "100%",
@@ -81,7 +80,7 @@ const QuizCard = ({ quiz_Cards }) => {
                                         src={`${elem.CardImg}`}
                                         alt={elem.CardImgDesc}
                                         className="size-full object-cover aspect-video"
-                                    // style={{height:"100px"}}
+                                        // style={{height:"100px"}}
                                     />
                                 </a>
                             </div>
@@ -138,20 +137,19 @@ const QuizCard = ({ quiz_Cards }) => {
                 );
             })}
 
-
             <ReactPaginate
                 pageCount={Math.ceil(quiz_Cards.length / itemsPerPage)}
-                activeClassName={'item active '}
-                breakClassName={'item break-me '}
-                breakLabel={'...'}
-                containerClassName={'pagination'}
-                disabledClassName={'disabled-page'}
+                activeClassName={"item active "}
+                breakClassName={"item break-me "}
+                breakLabel={"..."}
+                containerClassName={"pagination"}
+                disabledClassName={"disabled-page"}
                 pageRangeDisplayed={3}
                 marginPagesDisplayed={2}
                 nextClassName={"item next "}
                 nextLabel="next >"
                 onPageChange={handlePageChange}
-                pageClassName={'item pagination-page '}
+                pageClassName={"item pagination-page "}
                 previousClassName={"item previous"}
                 previousLabel="< prev"
             />

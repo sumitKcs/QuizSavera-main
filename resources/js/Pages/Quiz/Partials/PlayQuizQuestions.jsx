@@ -1,7 +1,5 @@
 import "../../../../css/quizquestions.css";
-import SingleQuizQuestion from "./SingleQuizQuestion";
 import React, { useState, useEffect } from "react";
-import ReactPaginate from "react-paginate";
 
 const PlayQuizQuestions = ({ questions }) => {
     console.log("questions", questions);
@@ -11,17 +9,18 @@ const PlayQuizQuestions = ({ questions }) => {
     const handleNextBtn = () => {
         if (currentQuestion < questions.length - 1)
             setCurrentQuestion(currentQuestion + 1);
-        console.log("selected", selected + 1);
     };
 
     const handlePrevBtn = () => {
-        if(currentQuestion >= 0)
-        setCurrentQuestion(currentQuestion - 1);
-        console.log("selected", selected + 1);
+        if (currentQuestion >= 0) setCurrentQuestion(currentQuestion - 1);
+    };
+
+    const handleQuestionNav = (index) => {
+        setCurrentQuestion(index);
     };
 
     return (
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col">
             <div className="bg-[#10a19d] flex justify-between p-2 text-white">
                 <h2 className="text-xl font-extrabold  text-white">
                     QuizSavera
@@ -52,18 +51,21 @@ const PlayQuizQuestions = ({ questions }) => {
                     </button>
                 </div>
             </div>
-            <div className="flex flex-col justify-start items-center">
-                <div className="w-fit">
+            <div className="flex lg:grid lg:grid-cols-3 justify-center items-start gap-8 h-screen">
+                <div className="lg:col-start-2 mt-5">
                     <div className="flex flex-col gap-4 items-center lg:max-w-lg px-4">
                         <h4 className="text-lg font-extrabold">
-                            {currentQuestion+1}.
-                            {questions[currentQuestion].question}What is the
+                            {currentQuestion + 1}.
+                            {questions[currentQuestion].question} What is the
                             capital of France?
                         </h4>
-                        <div className="flex flex-col justify-start items-start self-start">
+                        <div className="flex flex-col justify-start items-start self-start gap-4">
                             {questions[currentQuestion].options.map(
-                                (option) => (
-                                    <span className="flex justify-center items-center gap-2">
+                                (option, index) => (
+                                    <span
+                                        key={index}
+                                        className="flex justify-center items-center gap-2"
+                                    >
                                         <input
                                             type="radio"
                                             name={`question_${currentQuestion}`}
@@ -75,6 +77,20 @@ const PlayQuizQuestions = ({ questions }) => {
                                 )
                             )}
                         </div>
+                    </div>
+                </div>
+
+                <div className=" hidden lg:flex rounded-xl border-2 h-[700px] bg-[#10a19d]">
+                    <div className="flex flex-wrap gap-8 justify-start w-full h-fit p-8">
+                        {questions.map((item, index) => (
+                            <button
+                                key={index}
+                                className={`${currentQuestion === index ? "bg-white text-black" : "text-white"}  font-semibold border rounded-xl size-10 flex justify-center items-center hover:bg-white hover:text-black hover:cursor-pointer`}
+                                onClick={() => handleQuestionNav(index)}
+                            >
+                                {index + 1}
+                            </button>
+                        ))}
                     </div>
                 </div>
             </div>
