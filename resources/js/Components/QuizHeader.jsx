@@ -57,7 +57,7 @@ const QuizHeader = () => {
 
     return (
         <header className="bg-[#10a19d] flex flex-row-reverse justify-end lg:flex-row lg:justify-start px-4 py-2 gap-4 text-white">
-            <a href="/" className=" w-full text-center lg:w-auto text-left"><span className="text-xl font-extrabold">QuizSavera</span></a>
+            <a href="/" className=" w-full lg:w-auto text-left"><span className="text-xl font-extrabold">QuizSavera</span></a>
 
             <nav className={`hidden lg:flex justify-end items-center gap-4 w-full`}>
 

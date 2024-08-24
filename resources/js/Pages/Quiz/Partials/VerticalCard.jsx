@@ -4,9 +4,9 @@ import "../../../../css/blogCard.css";
 
 
 const VerticalCard = ({ data }) => {
-    console.log("quizCards", data)
+    console.log("data", data)
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 4; // Adjust this value as needed
+    const itemsPerPage = 3; // Adjust this value as needed
 
     const handlePageChange = ({ selected }) => {
         setCurrentPage(selected + 1);
@@ -37,7 +37,7 @@ const VerticalCard = ({ data }) => {
                             <div className="bg-[#10a19d] w-full text-center py-2 text-white font-bold">{elem.cat_name}</div>
                             <div className="flex flex-col justify-start items-start p-4 gap-8 size-full text-center">
                                 {elem.sub_cat.length && elem.sub_cat.map((subcat) => (
-                                    <a href={`#${subcat.cat_name}`} className="w-full border-b-2">{subcat.cat_name}</a>
+                                    <a href={`/quiz/${subcat.id}`} className="w-full border-b-2">{subcat.cat_name}</a>
                                 ))}
                             </div>
                             <div className="bg-[#10a19d] w-full text-center py-2 text-white font-bold">View More</div>
