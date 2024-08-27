@@ -36,6 +36,7 @@ Route::get('/blog/{id}', [BlogController::class, 'content'])->name('blog.content
 Route::get('/quiz', [QuizController::class, 'index'])->name('quiz.index');
 Route::get('/quiz/{cat_id}', [QuizController::class, 'getCat'])->name('quiz.getCat');
 Route::get('/quiz/{cat_id}/play', [QuizController::class, 'play'])->name('quiz.play');
+Route::get('/quiz/{cat_id}/analytics', [QuizController::class, 'analytics'])->name('quiz.analytics');
 // Route::get('/longanswer', [QuizController::class, 'longAnswer'])->name('longAnswer.index');
 
 

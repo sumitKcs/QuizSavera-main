@@ -244,70 +244,70 @@ class QuizController extends Controller
             [
                 "question" => "What is the capital of France?",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "question" => "What is the capital of France?",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "question" => "What is the capital of France?",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "question" => "What is the capital of France?",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "question" => "What is the capital of France?",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "question" => "What is the capital of France?",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "question" => "What is the capital of France?",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "question" => "What is the capital of France?",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "question" => "What is the capital of France?",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "question" => "What is the capital of France?",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
@@ -474,81 +474,102 @@ class QuizController extends Controller
 
         $questions = [
             [
-                "question" => "What is the capital of France?",
+                "id" => "1",
+                "question" => "What is the capital of France?(que)1",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
-                "question" => "What is the capital of France?",
+                "id" => "2",
+                "question" => "What is the capital of France?(que2)",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "B",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
-                "question" => "What is the capital of France?",
+                "id" => "3",
+                "question" => "What is the capital of France?((que3)",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
-                "question" => "What is the capital of France?",
+                "id" => "4",
+                "question" => "What is the capital of France?(que4)",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
-                "question" => "What is the capital of France?",
+                "id" => "5",
+                "question" => "What is the capital of France?(que5)",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
-                "question" => "What is the capital of France?",
+                "id" => "6",
+                "question" => "What is the capital of France?(que6)",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
-                "question" => "What is the capital of France?",
+                "id" => "7",
+                "question" => "What is the capital of France?(que7)",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
-                "question" => "What is the capital of France?",
+                "id" => "8",
+                "question" => "What is the capital of France?(que8)",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
-                "question" => "What is the capital of France?",
+                "id" => "9",
+                "question" => "What is the capital of France?(que9)",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
-                "question" => "What is the capital of France?",
+                "id" => "10",
+                "question" => "What is the capital of France?(que10)",
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "Option A",
+                "answer" => "A",
                 "explanation" =>
                     "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
 
         ];
 
+        // Custom comparison function to sort by "id"
+        usort($questions, function ($a, $b) {
+            return $a['id'] <=> $b['id'];
+        });
+
 
         return Inertia::render('Quiz/Play', [
             'questions' => $questions,
+            "minutes" => 10
         ]);
+    }
+
+    public function analytics(): Response
+    {
+        return Inertia::render("Analytics/Index");
     }
 }
