@@ -63,7 +63,7 @@ const AppLayout = ({
         <>
             <QuizHeader />
             {alert && <QuizAlert />}
-            <main className="parent_container">
+            <main className="parent_container overflow-x-hidden">
                 {carousel && <QuizCarousel />}
 
                 <div className="page_content_container">

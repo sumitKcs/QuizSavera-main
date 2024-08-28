@@ -8,7 +8,7 @@ const QuizFooter = () => {
         paddingBottom: "3rem",
         display: "flex",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
     };
     return (
         <footer>
@@ -82,7 +82,7 @@ const QuizFooter = () => {
                 </ul>
             </div>
             <span className="text_white self_center" style={footerStyle2}>
-                &copy; 2023 Comebyte
+                &copy; 2023 {import.meta.env.VITE_APP_NAME}
             </span>
         </footer>
     );
