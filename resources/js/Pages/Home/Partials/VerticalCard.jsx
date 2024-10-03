@@ -33,6 +33,7 @@ const VerticalCard = ({ title, items, limit }) => {
         padding: ".5rem",
         borderRadius: ".5rem",
     };
+    
     return (
         // <div div className="flex flex-col justify-start items-start w-full gap-4">
            <>
@@ -42,9 +43,13 @@ const VerticalCard = ({ title, items, limit }) => {
                             <div className="bg-[#10a19d] w-full text-center py-2 text-white font-bold">{title}</div>
                             <div className="flex flex-col justify-start items-start p-4 gap-8 size-full text-center">
                                {
-                                items.map((item) => (
-                                    <a href={`/quiz/${item?.sid}`} className="w-full border-b-2">{item?.text1st}</a>
-                                ))
+                                items.map((item) => {
+                                    console.log("item", item)
+                                    const contentType = item.contentType ? item.contentType.toString().toLowerCase() : "";
+                                    return (
+                                        <a href={`/quiz/${item?.sid}${contentType ? `/${contentType}` : ""}`} key={item.sid} className="w-full border-b-2">{item.text1st}</a>
+                                    )
+                                })
                                }
                             </div>
                             <div className="bg-[#10a19d] w-full text-center py-2 text-white font-bold cursor-pointer">View More</div>

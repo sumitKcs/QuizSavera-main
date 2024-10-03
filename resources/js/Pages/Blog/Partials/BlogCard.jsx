@@ -3,10 +3,10 @@ import ReactPaginate from "react-paginate";
 import "../../../../css/blogCard.css";
 
 
-const BlogCard = ({ quiz_Cards }) => {
-    console.log("quizCards", quiz_Cards)
+const BlogCard = ({ quizcards }) => {
+    console.log("quizCards", quizcards)
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 2; // Adjust this value as needed
+    const itemsPerPage = 5; // Adjust this value as needed
 
     const handlePageChange = ({ selected }) => {
         setCurrentPage(selected + 1);
@@ -16,7 +16,7 @@ const BlogCard = ({ quiz_Cards }) => {
     const [displayedItems, setDisplayedItems] = useState([])
 
     useEffect(() => {
-        const items = quiz_Cards.slice(
+        const items = quizcards.slice(
             currentPage * itemsPerPage,
             (currentPage + 1) * itemsPerPage
         );
@@ -29,14 +29,14 @@ const BlogCard = ({ quiz_Cards }) => {
         borderRadius: ".5rem",
     }; // Fixed error: changed 'border-radius' to 'borderRadius'
     return (
-        <>
+        <div div className="flex flex-col gap-4 p-2">
             {displayedItems.map((elem) => {
                 return (
                     <article
                         key={elem.id}
                         itemscope=""
                         itemtype="http://schema.org/BlogPosting"
-                        className="h-fit flex flex-col gap-2 material_shadow border border-black"
+                        className="blog_card"
                         style={articleStyle}
                     >
                         <span>
@@ -89,7 +89,7 @@ const BlogCard = ({ quiz_Cards }) => {
                             <div className="card_text_cont text-pretty lg:text-justify">
                                 <p
                                     itemprop="articleBody"
-                                    className="line-clamp-5"
+                                    className="line-clamp-5 text-[15px]"
                                 >
                                     {elem.CardContent}
                                 </p>
@@ -141,7 +141,7 @@ const BlogCard = ({ quiz_Cards }) => {
 
 
             <ReactPaginate
-                pageCount={Math.ceil(quiz_Cards.length / itemsPerPage)}
+                pageCount={Math.ceil(quizcards.length / itemsPerPage)}
                 activeClassName={'item active '}
                 breakClassName={'item break-me '}
                 breakLabel={'...'}
@@ -156,7 +156,7 @@ const BlogCard = ({ quiz_Cards }) => {
                 previousClassName={"item previous"}
                 previousLabel="< prev"
             />
-        </>
+        </div>
     );
 };
 export default BlogCard;

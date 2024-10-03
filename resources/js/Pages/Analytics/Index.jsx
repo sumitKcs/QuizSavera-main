@@ -55,7 +55,7 @@ export default function Index() {
         <>
             <Head title="Quiz" />
             <AppLayout
-                leftBar={false}
+                leftBar={true}
                 rightBar={false}
                 alert={false}
                 carousel={false}

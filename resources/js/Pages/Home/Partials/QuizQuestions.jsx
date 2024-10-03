@@ -4,10 +4,10 @@ import SingleQuizQuestion from "./SingleQuizQuestion";
 import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 
-const QuizQuestions = ({ questions, title }) => {
+const QuizQuestions = ({ questions }) => {
+    console.log("questions", questions)
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [lang, setLang] = useState("en");
     const itemsPerPage = 5; // Adjust this value as needed
 
 
@@ -29,33 +29,11 @@ const QuizQuestions = ({ questions, title }) => {
     return (
         <div className="quiz_question_container">
             <div className="qq_header">
-                {title}
+                Current Affairs Quiz - November, 2023
             </div>
-            <div className="flex flex-col gap-5 w-full">
-                {/* select hindi and english language */}
-                <div className="w-full flex justify-end">
-                    <select 
-                    defaultValue={'en'}
-                    name="select_lang" 
-                    id="select_lang" 
-                    className="w-32 px-2 py-0 rounded"
-                    onChange={(e) => {
-                        // check if window ahs localStorage object
-                        if (window.localStorage) {
-                            window.localStorage.setItem("language", e.target.value)
-                        }
-
-                        // set lang state
-                        setLang(e.target.value)
-                    }}
-                    >
-                        <option value="" disabled={true}>Select language</option>
-                        <option value="en">English</option>
-                        <option value="hi">Hindi</option>
-                    </select>
-                </div>
+            <div className="flex flex-col gap-10 w-full">
                 {displayedItems.map((question, index) => (
-                    <SingleQuizQuestion key={index} questionData={question} index={index} lang={lang} />
+                    <SingleQuizQuestion key={index} questionData={question} />
                 ))}
             </div>
             <ReactPaginate

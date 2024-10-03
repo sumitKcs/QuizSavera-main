@@ -130,13 +130,7 @@ header select option {
 
 @media only screen and (max-width: 640px) {
 
-    /* .mobile_menu {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-    } */
-
-    aside {
+    .leftbar {
         width: 300px;
         height: 100dvh;
         background-color: white;

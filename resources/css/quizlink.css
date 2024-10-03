@@ -1,12 +1,12 @@
 
 .quiz_link_header {
-    background-color: #10a19d;
-    border-radius: 8px;
-    color: white;
+    @apply w-full bg-[#10a19d] text-white rounded px-3 py-1 font-bold;
 
 }
-.sidebar_link{
-    font-weight: bold;
-    text-decoration: underline;
-    color: blue;
+.navbar {
+    @apply flex flex-col items-start gap-4 w-full px-1 py-2 mb-2 text-sm;
+}
+
+.navbar_link {
+    @apply  hover:text-blue-300 hover:underline;
 }

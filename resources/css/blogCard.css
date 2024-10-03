@@ -1,12 +1,14 @@
+.blog_card {
+    @apply h-fit flex flex-col gap-2;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
 .cardHeader {
     background-color: rgb(237, 255, 249);
     color: #10a19d;
     font-weight: bolder;
 }
 
-.blog_card {
-    border: 1px solid black;
-}
 
 .published_date {
     color: blue;

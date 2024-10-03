@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\QuizController;
@@ -31,12 +32,12 @@ use Inertia\Inertia;
 //     return Inertia::render('Dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/', [BlogController::class, 'index'])->name('blog.index');
-Route::get('/blog/{id}', [BlogController::class, 'content'])->name('blog.content');
-Route::get('/quiz', [QuizController::class, 'index'])->name('quiz.index');
-Route::get('/quiz/{cat_id}', [QuizController::class, 'getCat'])->name('quiz.getCat');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+Route::get('/quiz/{cat_id}', [HomeController::class, 'categories'])->name('Home.categories');
+Route::get('/quiz/{cat_id}/quiz', [QuizController::class, 'quizQuestions'])->name('quiz.questions');
 Route::get('/quiz/{cat_id}/play', [QuizController::class, 'play'])->name('quiz.play');
 Route::get('/quiz/{cat_id}/analytics', [QuizController::class, 'analytics'])->name('quiz.analytics');
+Route::get('/blog/{id}', [BlogController::class, 'content'])->name('blog.content');
 // Route::get('/longanswer', [QuizController::class, 'longAnswer'])->name('longAnswer.index');
 
 

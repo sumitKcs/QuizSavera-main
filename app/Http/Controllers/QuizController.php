@@ -3,471 +3,175 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Inertia\Response;
-use App\Models\QuizCard;
+use Illuminate\Support\Facades\Http;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class QuizController extends Controller
 {
     public function index(Request $request): Response
     {
-        $data = [
-            [
-                "id" => "1",
-                "cat_name" => "SSC CGL",
-                "cat_image" => "https://images.indianexpress.com/2018/12/SSClogo759.jpg",
-                "sub_cat" => [
-                    [
-                        "id" => "1",
-                        "cat_name" => "Aptitude"
-                    ],
-                    [
-                        "id" => "2",
-                        "cat_name" => "Reasoning"
-                    ],
-                    [
-                        "id" => "3",
-                        "cat_name" => "General Knowledge"
-                    ],
-                    [
-                        "id" => "4",
-                        "cat_name" => "History"
-                    ],
-                    [
-                        "id" => "5",
-                        "cat_name" => "Polity"
-                    ],
-                ]
-            ],
-            [
-                "id" => "2",
-                "cat_name" => "SSC CGL",
-                "cat_image" => "https://images.indianexpress.com/2018/12/SSClogo759.jpg",
-                "sub_cat" => [
-                    [
-                        "id" => "1",
-                        "cat_name" => "Aptitude"
-                    ],
-                    [
-                        "id" => "2",
-                        "cat_name" => "Reasoning"
-                    ],
-                    [
-                        "id" => "3",
-                        "cat_name" => "General Knowledge"
-                    ],
-                    [
-                        "id" => "4",
-                        "cat_name" => "History"
-                    ],
-                    [
-                        "id" => "5",
-                        "cat_name" => "Polity"
-                    ],
-                ]
-            ],
-            [
-                "id" => "3",
-                "cat_name" => "SSC CGL",
-                "cat_image" => "https://images.indianexpress.com/2018/12/SSClogo759.jpg",
-                "sub_cat" => [
-                    [
-                        "id" => "1",
-                        "cat_name" => "Aptitude"
-                    ],
-                    [
-                        "id" => "2",
-                        "cat_name" => "Reasoning"
-                    ],
-                    [
-                        "id" => "3",
-                        "cat_name" => "General Knowledge"
-                    ],
-                    [
-                        "id" => "4",
-                        "cat_name" => "History"
-                    ],
-                    [
-                        "id" => "5",
-                        "cat_name" => "Polity"
-                    ],
-                ]
-            ],
-            [
-                "id" => "4",
-                "cat_name" => "SSC CGL",
-                "cat_image" => "https://images.indianexpress.com/2018/12/SSClogo759.jpg",
-                "sub_cat" => [
-                    [
-                        "id" => "1",
-                        "cat_name" => "Aptitude"
-                    ],
-                    [
-                        "id" => "2",
-                        "cat_name" => "Reasoning"
-                    ],
-                    [
-                        "id" => "3",
-                        "cat_name" => "General Knowledge"
-                    ],
-                    [
-                        "id" => "4",
-                        "cat_name" => "History"
-                    ],
-                    [
-                        "id" => "5",
-                        "cat_name" => "Polity"
-                    ],
-                ]
-            ],
-            [
-                "id" => "5",
-                "cat_name" => "SSC CGL",
-                "cat_image" => "https://images.indianexpress.com/2018/12/SSClogo759.jpg",
-                "sub_cat" => [
-                    [
-                        "id" => "1",
-                        "cat_name" => "Aptitude"
-                    ],
-                    [
-                        "id" => "2",
-                        "cat_name" => "Reasoning"
-                    ],
-                    [
-                        "id" => "3",
-                        "cat_name" => "General Knowledge"
-                    ],
-                    [
-                        "id" => "4",
-                        "cat_name" => "History"
-                    ],
-                    [
-                        "id" => "5",
-                        "cat_name" => "Polity"
-                    ],
-                ]
-            ],
-            [
-                "id" => "6",
-                "cat_name" => "SSC CGL",
-                "cat_image" => "https://images.indianexpress.com/2018/12/SSClogo759.jpg",
-                "sub_cat" => [
-                    [
-                        "id" => "1",
-                        "cat_name" => "Aptitude"
-                    ],
-                    [
-                        "id" => "2",
-                        "cat_name" => "Reasoning"
-                    ],
-                    [
-                        "id" => "3",
-                        "cat_name" => "General Knowledge"
-                    ],
-                    [
-                        "id" => "4",
-                        "cat_name" => "History"
-                    ],
-                    [
-                        "id" => "5",
-                        "cat_name" => "Polity"
-                    ],
-                ]
-            ],
-            [
-                "id" => "7",
-                "cat_name" => "SSC CGL",
-                "cat_image" => "https://images.indianexpress.com/2018/12/SSClogo759.jpg",
-                "sub_cat" => [
-                    [
-                        "id" => "1",
-                        "cat_name" => "Aptitude"
-                    ],
-                    [
-                        "id" => "2",
-                        "cat_name" => "Reasoning"
-                    ],
-                    [
-                        "id" => "3",
-                        "cat_name" => "General Knowledge"
-                    ],
-                    [
-                        "id" => "4",
-                        "cat_name" => "History"
-                    ],
-                    [
-                        "id" => "5",
-                        "cat_name" => "Polity"
-                    ],
-                ]
-            ],
-            [
-                "id" => "8",
-                "cat_name" => "SSC CGL",
-                "cat_image" => "https://images.indianexpress.com/2018/12/SSClogo759.jpg",
-                "sub_cat" => [
-                    [
-                        "id" => "1",
-                        "cat_name" => "Aptitude"
-                    ],
-                    [
-                        "id" => "2",
-                        "cat_name" => "Reasoning"
-                    ],
-                    [
-                        "id" => "3",
-                        "cat_name" => "General Knowledge"
-                    ],
-                    [
-                        "id" => "4",
-                        "cat_name" => "History"
-                    ],
-                    [
-                        "id" => "5",
-                        "cat_name" => "Polity"
-                    ],
-                ]
-            ],
-
-
-        ];
-
 
         return Inertia::render('Quiz/Index', [
-            'data' => $data,
+            'data' => [],
         ]);
     }
 
-    public function questions(Request $request): Response
+    public function quizQuestions(Request $request, $cat_id): Response
     {
-        $questions = [
-            [
-                "question" => "What is the capital of France?",
-                "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "A",
-                "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
+
+        $sidebars = [
+            "left" => [
+                [
+                    "header" => "Current Affairs Quiz (1280)",
+                    "links" => [
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                    ],
+                ],
+                [
+                    "header" => "General Awareness Quiz (1280)",
+                    "links" => [
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                    ],
+                ],
+                [
+                    "header" => "Current Affairs Quiz (1280)",
+                    "links" => [
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                    ],
+                ],
+                [
+                    "header" => "General Awareness Quiz (1280)",
+                    "links" => [
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                    ],
+                ],
+                [
+                    "header" => "Current Affairs Quiz (1280)",
+                    "links" => [
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                    ],
+                ],
+                [
+                    "header" => "General Awareness Quiz (1280)",
+                    "links" => [
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                    ],
+                ],
             ],
-            [
-                "question" => "What is the capital of France?",
-                "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "A",
-                "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
-            ],
-            [
-                "question" => "What is the capital of France?",
-                "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "A",
-                "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
-            ],
-            [
-                "question" => "What is the capital of France?",
-                "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "A",
-                "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
-            ],
-            [
-                "question" => "What is the capital of France?",
-                "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "A",
-                "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
-            ],
-            [
-                "question" => "What is the capital of France?",
-                "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "A",
-                "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
-            ],
-            [
-                "question" => "What is the capital of France?",
-                "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "A",
-                "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
-            ],
-            [
-                "question" => "What is the capital of France?",
-                "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "A",
-                "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
-            ],
-            [
-                "question" => "What is the capital of France?",
-                "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "A",
-                "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
-            ],
-            [
-                "question" => "What is the capital of France?",
-                "options" => ["Paris", "London", "Madrid", "Berlin"],
-                "answer" => "A",
-                "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
+            "right" => [
+                [
+                    "header" => "Current Affairs Quiz (1280)",
+                    "links" => [
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                    ],
+                ],
+                [
+                    "header" => "General Awareness Quiz (1280)",
+                    "links" => [
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                        "Current Affairs Quiz - November, 2023",
+                    ],
+                ],
             ],
 
         ];
 
+         // call get-web rest api to get menu_items
+         $url = env('SERVER_URL') .'/api/'. env('API_VERSION')  . '/get-web-home';
 
-        return Inertia::render('Quiz/Questions', [
-            'questions' => $questions,
-        ]);
+         $response = Http::post($url, [
+             'catId' => $cat_id,
+             'device' => 'web',
+             'packageName' => 'com.quizsavera.app',
+         ]);
+         $response = $response->json();
+         $appName = $response['appName'];
+         $menuItems = $response['menuItems'];
+         $items = $response['items'];
+         $contentType = $response['contentType'];
+
+        //  if items length is 0 then return
+        if(count($items) == 0) {
+            return Inertia::render('Quiz/Questions', [
+                'title' => $appName,
+                'sidebars'=> $sidebars,
+                'menu_items' => $menuItems,
+                'isCategory' => 1,
+                'contentType' => strtolower($contentType),
+                'questions' => [],
+                'quizTitle' => null
+            ]);
+     
+        }
+
+        $questions = $items[0]['subItems'];
+        $quizTitle = $items[0]['mainItemName'];
+
+        if(count($questions) == 0) {
+            return Inertia::render('Quiz/Questions', [
+                'title' => $appName,
+                'sidebars'=> $sidebars,
+                'menu_items' => $menuItems,
+                'isCategory' => 1,
+                'contentType' => strtolower($contentType),
+                'questions' => [],
+                'quizTitle' => $quizTitle
+            ]);
+     
+        }
+
+         return Inertia::render('Quiz/Questions', [
+             'title' => $appName,
+             'sidebars'=> $sidebars,
+             'menu_items' => $menuItems,
+             'isCategory' => 1,
+             'contentType' => strtolower($contentType),
+             'questions' => $questions,
+             'quizTitle' => $quizTitle
+         ]);
     }
 
-    public function getCat($cat_id): Response
-    {
-        // $cat = Category::find($cat_id);
-
-        $data = [
-            [
-                "id" => "1",
-                "cat_name" => "Chapter 1",
-                "cat_image" => "https://images.indianexpress.com/2018/12/SSClogo759.jpg",
-                "sub_cat" => [
-                    [
-                        "id" => "1",
-                        "cat_name" => "Topic 1"
-                    ],
-                    [
-                        "id" => "2",
-                        "cat_name" => "Topic 2"
-                    ],
-                    [
-                        "id" => "3",
-                        "cat_name" => "Topic 3"
-                    ],
-                    [
-                        "id" => "4",
-                        "cat_name" => "Topic 4"
-                    ],
-                    [
-                        "id" => "5",
-                        "cat_name" => "Topic 5"
-                    ],
-                ]
-            ],
-            [
-                "id" => "2",
-                "cat_name" => "Chapter 2",
-                "cat_image" => "https://images.indianexpress.com/2018/12/SSClogo759.jpg",
-                "sub_cat" => [
-                    [
-                        "id" => "1",
-                        "cat_name" => "Topic 1"
-                    ],
-                    [
-                        "id" => "2",
-                        "cat_name" => "Topic 2"
-                    ],
-                    [
-                        "id" => "3",
-                        "cat_name" => "Topic 3"
-                    ],
-                    [
-                        "id" => "4",
-                        "cat_name" => "Topic 4"
-                    ],
-                    [
-                        "id" => "5",
-                        "cat_name" => "Topic 5"
-                    ],
-                ]
-            ],
-            [
-                "id" => "3",
-                "cat_name" => "Chapter 3",
-                "cat_image" => "https://images.indianexpress.com/2018/12/SSClogo759.jpg",
-                "sub_cat" => [
-                    [
-                        "id" => "1",
-                        "cat_name" => "Topic 1"
-                    ],
-                    [
-                        "id" => "2",
-                        "cat_name" => "Topic 2"
-                    ],
-                    [
-                        "id" => "3",
-                        "cat_name" => "Topic 3"
-                    ],
-                    [
-                        "id" => "4",
-                        "cat_name" => "Topic 4"
-                    ],
-                    [
-                        "id" => "5",
-                        "cat_name" => "Topic 5"
-                    ],
-                ]
-            ],
-            [
-                "id" => "4",
-                "cat_name" => "Chapter 4",
-                "cat_image" => "https://images.indianexpress.com/2018/12/SSClogo759.jpg",
-                "sub_cat" => [
-                    [
-                        "id" => "1",
-                        "cat_name" => "Topic 1"
-                    ],
-                    [
-                        "id" => "2",
-                        "cat_name" => "Topic 2"
-                    ],
-                    [
-                        "id" => "3",
-                        "cat_name" => "Topic 3"
-                    ],
-                    [
-                        "id" => "4",
-                        "cat_name" => "Topic 4"
-                    ],
-                    [
-                        "id" => "5",
-                        "cat_name" => "Topic 5"
-                    ],
-                ]
-            ],
-            [
-                "id" => "5",
-                "cat_name" => "Chapter 5",
-                "cat_image" => "https://images.indianexpress.com/2018/12/SSClogo759.jpg",
-                "sub_cat" => [
-                    [
-                        "id" => "1",
-                        "cat_name" => "Topic 1"
-                    ],
-                    [
-                        "id" => "2",
-                        "cat_name" => "Topic 2"
-                    ],
-                    [
-                        "id" => "3",
-                        "cat_name" => "Topic 3"
-                    ],
-                    [
-                        "id" => "4",
-                        "cat_name" => "Topic 4"
-                    ],
-                    [
-                        "id" => "5",
-                        "cat_name" => "Topic 5"
-                    ],
-                ]
-            ],
-        ];
-
-
-        return Inertia::render('Quiz/Index', [
-            "data" => $data,
-        ]);
-
-    }
+   
     public function play($cat_id): Response
     {
         // $cat = Category::find($cat_id);
@@ -479,7 +183,7 @@ class QuizController extends Controller
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
                 "answer" => "A",
                 "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
+                "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "id" => "2",
@@ -487,7 +191,7 @@ class QuizController extends Controller
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
                 "answer" => "B",
                 "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
+                "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "id" => "3",
@@ -495,7 +199,7 @@ class QuizController extends Controller
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
                 "answer" => "A",
                 "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
+                "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "id" => "4",
@@ -503,7 +207,7 @@ class QuizController extends Controller
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
                 "answer" => "A",
                 "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
+                "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "id" => "5",
@@ -511,7 +215,7 @@ class QuizController extends Controller
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
                 "answer" => "A",
                 "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
+                "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "id" => "6",
@@ -519,7 +223,7 @@ class QuizController extends Controller
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
                 "answer" => "A",
                 "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
+                "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "id" => "7",
@@ -527,7 +231,7 @@ class QuizController extends Controller
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
                 "answer" => "A",
                 "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
+                "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "id" => "8",
@@ -535,7 +239,7 @@ class QuizController extends Controller
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
                 "answer" => "A",
                 "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
+                "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "id" => "9",
@@ -543,7 +247,7 @@ class QuizController extends Controller
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
                 "answer" => "A",
                 "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
+                "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
             [
                 "id" => "10",
@@ -551,7 +255,7 @@ class QuizController extends Controller
                 "options" => ["Paris", "London", "Madrid", "Berlin"],
                 "answer" => "A",
                 "explanation" =>
-                    "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
+                "Speed = 60 x (5/18) m/sec = (50/3) m/sec.Length of the train = (Speed x Time).Length of the train = (50/3) x 9 m = 150 m.",
             ],
 
         ];
@@ -561,10 +265,9 @@ class QuizController extends Controller
             return $a['id'] <=> $b['id'];
         });
 
-
         return Inertia::render('Quiz/Play', [
             'questions' => $questions,
-            "minutes" => 10
+            "minutes" => 10,
         ]);
     }
 

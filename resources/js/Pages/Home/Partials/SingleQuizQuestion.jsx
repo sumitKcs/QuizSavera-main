@@ -1,39 +1,15 @@
-import { useEffect } from "react";
 import "../../../../css/quizquestions.css";
 import { useState } from "react";
 
-const SingleQuizQuestion = ({ questionData, index, lang }) => {
+const SingleQuizQuestion = ({ questionData }) => {
     const [showAnswer, setShowAnswer] = useState(false);
     const [showComment, setShowComment] = useState(false);
     const [showReport, setShowReport] = useState(false);
-    const [question, setQuestion] = useState("");
-    const [answer, setAnswer] = useState("");
-    const [solution, setSolution] = useState("");
-    const [options, setOptions] = useState([]);
 
     const toggleAnswer = () => setShowAnswer(!showAnswer);
     const toggleComment = () => setShowComment(!showComment);
     const toggleReport = () => setShowReport(!showReport);
 
-    const options_eng = [questionData.option1_eng, questionData.option2_eng, questionData.option3_eng, questionData.option4_eng, questionData.option5_eng];
-    const options_hin = [questionData.option1_hin, questionData.option2_hin, questionData.option3_hin, questionData.option4_hin, questionData.option5_hin];
-    console.log("Single quiz questionData", questionData);
-
-    useEffect(() => {
-        if(lang == 'en') {
-            setQuestion(questionData.question_eng);
-            setAnswer(questionData.answer_eng);
-            setSolution(questionData.solution_eng);
-            setOptions(options_eng);
-        } else {
-            setQuestion(questionData.question_hin);
-            setAnswer(questionData.answer_hin);
-            setSolution(questionData.solution_hin);
-            setOptions(options_hin);
-        }
-    }, [lang]);
-    
-  
     const containerStyle = {
         width: "100%",
     };
@@ -61,7 +37,6 @@ const SingleQuizQuestion = ({ questionData, index, lang }) => {
         textAlign: "left",
     };
 
-    console.log("questionData", questionData);
     return (
         <div
             itemProp="question"
@@ -78,13 +53,12 @@ const SingleQuizQuestion = ({ questionData, index, lang }) => {
                     fontWeight: "900",
                 }}
             >
-                {index+1}. {question}
+                {questionData.quizQuestion}
             </h4>
 
             <ul style={listStyle}>
-                {options.map((option, i) => {
-                    return option !== 'null' ? (
-                        <li
+                {questionData.quizOptions.map((option, i) => (
+                    <li
                         key={i}
                         itemProp="suggestedAnswer"
                         itemScope=""
@@ -104,8 +78,7 @@ const SingleQuizQuestion = ({ questionData, index, lang }) => {
                             {String.fromCharCode(65 + i)}. {option}
                         </label>
                     </li>
-                    ) : ""
-                })}
+                ))}
             </ul>
 
             <div className="quiz_action_buttons_cont">
@@ -115,7 +88,7 @@ const SingleQuizQuestion = ({ questionData, index, lang }) => {
                     className="quiz_answer_button"
                     onClick={toggleAnswer}
                 >
-                    <img src="/answer.png" alt="view answer" width="25px" />
+                    <img src="./answer.png" alt="view answer" width="25px" />
                 </button>
                 <button
                     title="comment"
@@ -123,7 +96,7 @@ const SingleQuizQuestion = ({ questionData, index, lang }) => {
                     className="quiz_comment_button"
                     onClick={toggleComment}
                 >
-                    <img src="/comments.png" alt="comment" width="25px" />
+                    <img src="./comments.png" alt="comment" width="25px" />
                 </button>
                 <button
                     title="report this question"
@@ -131,19 +104,19 @@ const SingleQuizQuestion = ({ questionData, index, lang }) => {
                     className="quiz_report_button"
                     onClick={toggleReport}
                 >
-                    <img src="/warning.png" alt="report" width="25px" />
+                    <img src="./warning.png" alt="report" width="25px" />
                 </button>
             </div>
 
             {showAnswer && (
-                <div className="hidden showAns border rounded-xl p-2">
-                    <span className=" font-bold">
+                <div className="hidden showAns">
+                    <span style={{ fontWeight: "bold" }}>
                         <span>Answer: </span>
-                        {questionData?.answer?.toUpperCase()}
+                        {questionData.quizAnswer}
                     </span>
                     <br />
                     <br />
-                    <p><span className="font-bold">Solution: </span>{lang == 'eng' ? questionData?.solution_eng : questionData?.solution_hin}</p>
+                    <p>{questionData.quizExplanation}</p>
                 </div>
             )}
 
