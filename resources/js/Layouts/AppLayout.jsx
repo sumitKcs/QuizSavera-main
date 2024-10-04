@@ -1,4 +1,5 @@
 import "../../css/quizlayout.css";
+import { useState } from "react";
 import QuizCarousel from "@/Components/QuizCarousel";
 import QuizLink from "@/Components/QuizLink";
 import QuizFooter from "@/Components/QuizFooter";
@@ -11,20 +12,7 @@ import Tailwind from 'primereact/passthrough/tailwind';
 import classNames from 'classnames';
 import { twMerge } from 'tailwind-merge';
 
-            
-
-const AppLayout = ({
-    children,
-    menu_items,
-    leftBar = true,
-    rightBar = true,
-    carousel = true,
-    alert = true,
-    sidebars = null,
-}) => {
-
-
-const MyDesignSystem = {
+const PaginationStyle = {
     paginator: {
         root: {
             className: classNames(
@@ -156,7 +144,7 @@ const MyDesignSystem = {
         jumptopagedropdown: {
             root: ({ props, state }) => ({
                 className: classNames(
-                    'inline-flex relative cursor-pointer user-none ' ,
+                    'inline-flex relative cursor-pointer user-none ',
                     'bg-white border rounded-md',
                     'transition duration-200',
                     'h-12 mx-2',
@@ -203,12 +191,36 @@ const MyDesignSystem = {
         }
     }
 }
-        
 
-    console.log("sidebars", sidebars);
+
+const AppLayout = ({
+    children,
+    menu_items,
+    leftBar = true,
+    rightBar = true,
+    carousel = true,
+    alert = true,
+    sidebars = null,
+}) => {
+
+    const [leftbar, setLeftbar] = useState(sidebars?.leftbar ?? []);
+    const [rightbar, setRightbar] = useState(sidebars?.rightbar ?? []);
+    const [leftbarSearch, setLeftbarSearch] = useState('');
+
+    const handleLeftbarSearch = (search) => {
+        // filter leftbar based on search
+        const filteredLeftbar = sidebars?.leftbar.filter((item) => {
+            const searchTerm = search.toLowerCase();
+            const mainItemName = item.mainItemName.toLowerCase()
+            // check if  mainItemName contains searchTerm use regex to check if searchTerm is in mainItemName
+            const regex = new RegExp(searchTerm, 'i');
+            return regex.test(mainItemName);
+        });
+        setLeftbar(filteredLeftbar);
+    };
 
     return (
-        <PrimeReactProvider value={{ unstyled: true, pt: MyDesignSystem, ptOptions: { mergeSections: true, mergeProps: true, classNameMergeFunction: twMerge } }}>
+        <PrimeReactProvider value={{ unstyled: true, pt: PaginationStyle, ptOptions: { mergeSections: true, mergeProps: true, classNameMergeFunction: twMerge } }}>
             <QuizHeader menu_items={menu_items} />
             {alert && <QuizAlert />}
             <main className="overflow-x-hidden">
@@ -219,12 +231,16 @@ const MyDesignSystem = {
                         <aside
                             className="leftbar bg-slate-700 text-white flex flex-col gap-4">
                             <div className="w-full">
-                                <input type="text" className="rounded w-full text-black p-1 px-2" placeholder="search.." />
+                                <input type="text" className="rounded w-full text-black p-1 px-2" placeholder="search.."
+                                    onChange={(e) => {
+                                        handleLeftbarSearch(e.target.value);
+                                    }}
+                                />
                             </div>
                             {
-                                sidebars?.leftbar.map((item, index) => {
+                                leftbar.map((item, index) => {
                                     return (
-                                        <QuizLink key={index} props={item} />
+                                        <QuizLink key={index} props={item} search={leftbarSearch} />
                                     )
                                 })
                             }
@@ -237,7 +253,7 @@ const MyDesignSystem = {
                                 <input type="text" className="rounded w-full text-black p-1 px-2" placeholder="search.." />
                             </div>
                             {
-                                sidebars?.rightbar.map((item, index) => {
+                                rightbar.map((item, index) => {
                                     return (
                                         <QuizLink key={index} props={item} />
                                     )

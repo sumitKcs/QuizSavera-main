@@ -34,8 +34,7 @@ export default function Index({ title, sidebars, menu_items, views, isCategory, 
                                             {
                                                 view.subItems.map((subitem) => {
                                                     return (
-                                                        <VerticalCard key={subitem.sid} title={subitem.text1st} items={subitem.subItems} limit={5} />
-
+                                                        <VerticalCard key={subitem.sid} title={subitem.text1st} categoryId={subitem.mid} items={subitem.subItems} limit={2} />
                                                     )
                                                 })
                                             }
@@ -56,15 +55,19 @@ export default function Index({ title, sidebars, menu_items, views, isCategory, 
                                                             return (
                                                                 <tr className="border border-black">
                                                                     <td className="border border-black border-r-1 p-5">{subitem.text1st}</td>
-                                                                    <td className="p-5 flex flex-col md:flex-row">
-                                                                        {
+                                                                    <td className="p-5">
+                                                                       <ul className="list-disc p-5 lg:columns-2">
+                                                                       {
                                                                             subitem.subItems.map((subsubitem) => {
                                                                                 const contentType = subsubitem.contentType ? subsubitem.contentType.toString().toLowerCase() : "";
                                                                                 return (
-                                                                                    <a href={`/quiz/${subsubitem?.sid}${contentType ? `/${contentType}` : ""}`} key={subsubitem.sid} className="underline text-blue-700 pr-3">{subsubitem.text1st}</a>
+                                                                                   <li>
+                                                                                     <a href={`/quiz/${subsubitem?.sid}${contentType ? `/${contentType}` : ""}`} key={subsubitem.sid} className="underline text-blue-700 pr-3">{subsubitem.text1st}</a>
+                                                                                   </li>
                                                                                 )
                                                                             })
                                                                         }
+                                                                       </ul>
                                                                     </td>
                                                                 </tr>
                                                             )

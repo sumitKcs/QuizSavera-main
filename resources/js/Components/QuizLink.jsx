@@ -10,7 +10,7 @@ const QuizLink = ({ props }) => {
                     const contentType = item.contentType ? item.contentType.toString().toLowerCase() : "";
 
                     return (
-                        <span className="flex items-center gap-2" key={index}>
+                        <span className="flex items-center gap-2 nav_items" key={index}>
                             <div>
                                 {/* <img
                                     className=""
