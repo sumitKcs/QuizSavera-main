@@ -3,10 +3,12 @@ const QuizLink = ({ props }) => {
     return (
         <div className="flex flex-col items-start w-full">
             <h4 className="quiz_link_header ">
-                {props.header}
+                {props?.mainItemName}
             </h4>
             <nav className="navbar">
-                {props.links.map((link, index) => {
+                {props?.subItems.map((item, index) => {
+                    const contentType = item.contentType ? item.contentType.toString().toLowerCase() : "";
+
                     return (
                         <span className="flex items-center gap-2" key={index}>
                             <div>
@@ -44,8 +46,8 @@ const QuizLink = ({ props }) => {
                                     </g>
                                 </svg>
                             </div>
-                            <a href="#" className="navbar_link">
-                                {link}
+                            <a href={`/quiz/${item?.sid}${contentType ? `/${contentType}` : ""}`}  className="navbar_link">
+                                {item?.text1st}
                             </a>
                         </span>
                     );

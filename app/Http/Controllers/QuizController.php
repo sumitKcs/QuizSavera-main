@@ -20,104 +20,9 @@ class QuizController extends Controller
     public function quizQuestions(Request $request, $cat_id): Response
     {
 
-        $sidebars = [
-            "left" => [
-                [
-                    "header" => "Current Affairs Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "General Awareness Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "Current Affairs Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "General Awareness Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "Current Affairs Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "General Awareness Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-            ],
-            "right" => [
-                [
-                    "header" => "Current Affairs Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "General Awareness Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-            ],
-
-        ];
 
          // call get-web rest api to get menu_items
-         $url = env('SERVER_URL') .'/api/'. env('API_VERSION')  . '/get-web-home';
+         $url = env('SERVER_URL') .'/api/'. env('API_VERSION')  . '/get-web-page-data';
 
          $response = Http::post($url, [
              'catId' => $cat_id,
@@ -129,6 +34,7 @@ class QuizController extends Controller
          $menuItems = $response['menuItems'];
          $items = $response['items'];
          $contentType = $response['contentType'];
+         $sidebars = $response['sidebars'];
 
         //  if items length is 0 then return
         if(count($items) == 0) {

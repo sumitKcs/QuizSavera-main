@@ -120,6 +120,7 @@ class HomeController extends Controller
         $appName = $response['appName'];
         $menuItems = $response['menuItems'];
         $views = $response['items'];
+        $sidebars = $response['sidebars'];
 
         return Inertia::render('Home/Index', [
             'title' => $appName,
@@ -232,7 +233,7 @@ class HomeController extends Controller
 
 
         // call get-web rest api to get menu_items
-        $url = env('SERVER_URL') . '/api/' . env('API_VERSION') . '/get-web-home';
+        $url = env('SERVER_URL') . '/api/' . env('API_VERSION') . '/get-web-page-data';
 
         $response = Http::post($url, [
             'catId' => $cat_id,
@@ -244,6 +245,7 @@ class HomeController extends Controller
         $menuItems = $response['menuItems'];
         $views = $response['items'];
         $contentType = $response['contentType'];
+        $sidebars = $response['sidebars'];
 
         // if contentType is null
         if ($contentType === null) {
@@ -282,6 +284,7 @@ class HomeController extends Controller
             'views' => $views,
             'isCategory' => 1,
             'contentType' => strtolower($contentType),
+            
         ]);
     }
 
