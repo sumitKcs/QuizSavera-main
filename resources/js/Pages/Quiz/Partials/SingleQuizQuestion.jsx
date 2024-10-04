@@ -11,16 +11,28 @@ const SingleQuizQuestion = ({ questionData, index, lang }) => {
     const [solution, setSolution] = useState("");
     const [options, setOptions] = useState([]);
 
-    const toggleAnswer = () => setShowAnswer(!showAnswer);
-    const toggleComment = () => setShowComment(!showComment);
-    const toggleReport = () => setShowReport(!showReport);
+    const toggleAnswer = () => {
+        setShowAnswer(!showAnswer);
+        setShowComment(false);
+        setShowReport(false);
+    };
+    const toggleComment = () => {
+        setShowComment(!showComment)
+        setShowAnswer(false);
+        setShowReport(false);
+    };
+    const toggleReport = () => {
+        setShowReport(!showReport)
+        setShowComment(false);
+        setShowAnswer(false);
+    };
 
     const options_eng = [questionData.option1_eng, questionData.option2_eng, questionData.option3_eng, questionData.option4_eng, questionData.option5_eng];
     const options_hin = [questionData.option1_hin, questionData.option2_hin, questionData.option3_hin, questionData.option4_hin, questionData.option5_hin];
     console.log("Single quiz questionData", questionData);
 
     useEffect(() => {
-        if(lang == 'en') {
+        if (lang == 'en') {
             setQuestion(questionData.question_eng);
             setAnswer(questionData.answer_eng);
             setSolution(questionData.solution_eng);
@@ -32,8 +44,8 @@ const SingleQuizQuestion = ({ questionData, index, lang }) => {
             setOptions(options_hin);
         }
     }, [lang]);
-    
-  
+
+
     const containerStyle = {
         width: "100%",
     };
@@ -78,64 +90,39 @@ const SingleQuizQuestion = ({ questionData, index, lang }) => {
                     fontWeight: "900",
                 }}
             >
-                {index+1}. {question}
+                {index + 1}. {question}
             </h4>
 
             <ul style={listStyle}>
                 {options.map((option, i) => {
                     return option !== 'null' ? (
                         <li
-                        key={i}
-                        itemProp="suggestedAnswer"
-                        itemScope=""
-                        itemType="http://schema.org/Answer"
-                        className="qq_option"
-                    >
-                        <input
-                            type="radio"
-                            name={`q${questionData.id}`}
-                            id={`q${questionData.id}_option${i + 1}`}
-                            value={option}
-                        />
-                        <label
-                            htmlFor={`q${questionData.id}_option${i + 1}`}
-                            itemProp="text"
+                            key={i}
+                            itemProp="suggestedAnswer"
+                            itemScope=""
+                            itemType="http://schema.org/Answer"
+                            className="qq_option"
                         >
-                            {String.fromCharCode(65 + i)}. {option}
-                        </label>
-                    </li>
+                            <input
+                                type="radio"
+                                name={`q${questionData.id}`}
+                                id={`q${questionData.id}_option${i + 1}`}
+                                value={option}
+                            />
+                            <label
+                                htmlFor={`q${questionData.id}_option${i + 1}`}
+                                itemProp="text"
+                            >
+                                {String.fromCharCode(65 + i)}. {option}
+                            </label>
+                        </li>
                     ) : ""
                 })}
             </ul>
 
-            <div className="quiz_action_buttons_cont">
-                <button
-                    title="view answer"
-                    style={buttonStyle}
-                    className="quiz_answer_button"
-                    onClick={toggleAnswer}
-                >
-                    <img src="/answer.png" alt="view answer" width="25px" />
-                </button>
-                <button
-                    title="comment"
-                    style={buttonStyle}
-                    className="quiz_comment_button"
-                    onClick={toggleComment}
-                >
-                    <img src="/comments.png" alt="comment" width="25px" />
-                </button>
-                <button
-                    title="report this question"
-                    style={buttonStyle}
-                    className="quiz_report_button"
-                    onClick={toggleReport}
-                >
-                    <img src="/warning.png" alt="report" width="25px" />
-                </button>
-            </div>
 
-            {showAnswer && (
+           <div className="flex flex-col gap-2 mt-6 border-b-2 border-gray-300 pb-2">
+           {showAnswer && (
                 <div className="hidden showAns border rounded-xl p-2">
                     <span className=" font-bold">
                         <span>Answer: </span>
@@ -176,6 +163,34 @@ const SingleQuizQuestion = ({ questionData, index, lang }) => {
                     <button className="submit_btn">Submit</button>
                 </div>
             )}
+
+            <div className="quiz_action_buttons_cont">
+                <button
+                    title="view answer"
+                    style={buttonStyle}
+                    className="quiz_answer_button"
+                    onClick={toggleAnswer}
+                >
+                    <img src="/answer.png" alt="view answer" width="25px" />
+                </button>
+                <button
+                    title="comment"
+                    style={buttonStyle}
+                    className="quiz_comment_button"
+                    onClick={toggleComment}
+                >
+                    <img src="/comments.png" alt="comment" width="25px" />
+                </button>
+                <button
+                    title="report this question"
+                    style={buttonStyle}
+                    className="quiz_report_button"
+                    onClick={toggleReport}
+                >
+                    <img src="/warning.png" alt="report" width="25px" />
+                </button>
+            </div>
+           </div>
         </div>
     );
 };
