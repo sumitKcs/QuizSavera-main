@@ -17,7 +17,7 @@ main {
 }
 
 .rightbar, .leftbar {
-    @apply w-full h-[100dvh]  min-w-[300px];
+    @apply w-full max-h-[1200px]  min-w-[300px];
 }
 
 .leftbar {
