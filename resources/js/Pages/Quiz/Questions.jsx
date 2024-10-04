@@ -8,7 +8,7 @@ export default function Questions({ title, sidebars, menu_items, questions, quiz
         <>
             <Head title={`${title} Quiz`} />
             <AppLayout menu_items={menu_items} sidebars={sidebars} leftBar={true} rightBar={false} carousel={false}>
-                <QuizQuestions questions={questions} title={quizTitle} />
+                <QuizQuestions questions={questions} title={quizTitle} itemsPerPageVal={3} />
             </AppLayout>
         </>
     );

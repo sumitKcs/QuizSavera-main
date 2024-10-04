@@ -8,18 +8,21 @@ import { Paginator } from 'primereact/paginator';
 // import 'primeicons/primeicons.css';
 
 
-const  QuizQuestions = ({ questions, title }) => {
+const QuizQuestions = ({ questions, title, itemsPerPageVal }) => {
 
-    const [currentPage, setCurrentPage] = useState(0);
+    // instead of moving by page, primereact paginator moves by items index
+    // if itemsPerPage = 10, then the first question index is 0, second question index is 10, third question index is 20, etc.
+    const [firstQuestionIndex, setFirstQuestionIndex] = useState(0);  //for each pagination change, change the first question index
     const [lang, setLang] = useState("en");
-    const [itemsPerPage, setItemsPerPage] = useState(5);
-    const [questionNumber, setQuestionNumber] = useState(1);
+    const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageVal ?? 10);
+    let questionNumber = firstQuestionIndex;
+
 
     console.log("questions", questions);
 
 
     const onPageChange = (event) => {
-        setCurrentPage(event.first);
+        setFirstQuestionIndex(event.first);
         setItemsPerPage(event.rows);
     };
 
@@ -51,21 +54,24 @@ const  QuizQuestions = ({ questions, title }) => {
                         <option value="hi">Hindi</option>
                     </select>
                 </div>
-                {questions.slice( currentPage, currentPage + itemsPerPage).map((question, index) => {
-                    return  <SingleQuizQuestion key={index} questionData={question} index={question.id} lang={lang} />
-                })}
+                {
+                    questions.slice(firstQuestionIndex, firstQuestionIndex + itemsPerPage).map((question, index) => {
+                        return <SingleQuizQuestion key={index} questionData={question} index={questionNumber++} lang={lang} />
+                    })}
             </div>
 
 
 
-            <Paginator
-                first={currentPage}
-                rows={itemsPerPage}
-                totalRecords={questions.length}
-                // rowsPerPageOptions={[3, 5, 10, 15]}
-                onPageChange={onPageChange}
-                alwaysShow={false}
-            />
+            <div className="w-full rounded-md flex justify-center">
+                <Paginator
+                    first={firstQuestionIndex}
+                    rows={itemsPerPage}
+                    totalRecords={questions.length}
+                    // rowsPerPageOptions={[3, 5, 10, 15]}
+                    onPageChange={onPageChange}
+                    alwaysShow={false}
+                />
+            </div>
 
 
 

@@ -16,7 +16,7 @@ const PaginationStyle = {
     paginator: {
         root: {
             className: classNames(
-                'flex items-center justify-center flex-wrap',
+                'flex items-center justify-center flex-wrap gap-4',
                 'bg-white text-gray-500 border-0 px-4 py-2 rounded-md',
                 // 'dark:bg-gray-900 dark:text-white/60 dark:border-blue-900/40' // Dark Mode
             )
@@ -24,11 +24,11 @@ const PaginationStyle = {
         firstpagebutton: ({ context }) => ({
             className: classNames(
                 'relative inline-flex items-center justify-center user-none overflow-hidden leading-none',
-                'border-0 text-gray-500  min-w-[3rem] h-12 m-[0.143rem] rounded-md',
+                'border border-2 border-[rgba(191,219,254,1)] text-gray-500  min-w-[3rem] h-12 m-[0.143rem] rounded-md',
                 'transition duration-200',
                 // 'dark:text-white', //Dark Mode
                 {
-                    'cursor-default pointer-events-none opacity-60': context.disabled,
+                    'border border-2 border-gray-300 cursor-default pointer-events-none opacity-60': context.disabled,
                     'focus:outline-none focus:outline-offset-0 focus:shadow-[0_0_0_0.2rem_rgba(191,219,254,1)]': !context.disabled // Focus
                 }
             )
@@ -60,11 +60,11 @@ const PaginationStyle = {
         lastpagebutton: ({ context }) => ({
             className: classNames(
                 'relative inline-flex items-center justify-center user-none overflow-hidden leading-none',
-                'border-0 text-gray-500 min-w-[3rem] h-12 m-[0.143rem] rounded-md',
+                'border border-2 border-[rgba(191,219,254,1)] text-gray-500 min-w-[3rem] h-12 m-[0.143rem] rounded-md',
                 'transition duration-200',
                 // 'dark:text-white', //Dark Mode
                 {
-                    'cursor-default pointer-events-none opacity-60': context.disabled,
+                    'border border-2 border-gray-300 cursor-default pointer-events-none opacity-60': context.disabled,
                     'focus:outline-none focus:outline-offset-0 focus:shadow-[0_0_0_0.2rem_rgba(191,219,254,1)]': !context.disabled // Focus
                 }
             )
@@ -246,7 +246,7 @@ const AppLayout = ({
                             }
                         </aside>
                     )}
-                    <div className={`w-full lg:max-w-[98%] content flex ${rightBar ? "md:col-span-2 lg:col-span-1" : "md:col-span-2"}`}>{children}</div>
+                    <div className={`w-full lg:max-w-[98%] lg:min-h-[1200px] content flex ${rightBar ? "md:col-span-2 lg:col-span-1" : "md:col-span-2"}`}>{children}</div>
                     {rightBar && (
                         <aside className={`rightbar bg-slate-700 text-white flex flex-col gap-4`}>
                             <div className="w-full">
