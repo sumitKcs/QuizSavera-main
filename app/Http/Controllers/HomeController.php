@@ -246,11 +246,19 @@ class HomeController extends Controller
         $views = $response['items'];
         $contentType = $response['contentType'];
         $sidebars = $response['sidebars'];
+        $description = $response['description'];
+        $content = $response['content'];
+        $recommended_content = $response['recommended_content'];
+        $keywords = $response['keywords'];
 
         // if contentType is null
         if ($contentType === null) {
             return Inertia::render('Home/Index', [
                 'title' => $appName,
+                'description' => $description,
+                'content' => $content,
+                'recommended_content' => $recommended_content,
+                'keywords' => $keywords,
                 'sidebars' => $sidebars,
                 'menu_items' => $menuItems,
                 'views' => [],
@@ -279,12 +287,16 @@ class HomeController extends Controller
 
         return Inertia::render('Home/Index', [
             'title' => $appName,
+            'description' => $description,
+            'content' => $content,
+            'recommended_content' => $recommended_content,
+            'keywords' => $keywords,
             'sidebars' => $sidebars,
             'menu_items' => $menuItems,
             'views' => $views,
             'isCategory' => 1,
             'contentType' => strtolower($contentType),
-            
+
         ]);
     }
 

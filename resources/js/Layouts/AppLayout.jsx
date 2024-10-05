@@ -217,6 +217,7 @@ const AppLayout = ({
             return regex.test(mainItemName);
         });
         setLeftbar(filteredLeftbar);
+        setLeftbarSearch(search);
     };
 
     return (
