@@ -201,11 +201,15 @@ const AppLayout = ({
     carousel = true,
     alert = true,
     sidebars = null,
+    footer = [],
+    notificationItems= []
 }) => {
 
     const [leftbar, setLeftbar] = useState(sidebars?.leftbar ?? []);
     const [rightbar, setRightbar] = useState(sidebars?.rightbar ?? []);
     const [leftbarSearch, setLeftbarSearch] = useState('');
+
+    console.log("footer", footer);
 
     const handleLeftbarSearch = (search) => {
         // filter leftbar based on search
@@ -223,14 +227,14 @@ const AppLayout = ({
     return (
         <PrimeReactProvider value={{ unstyled: true, pt: PaginationStyle, ptOptions: { mergeSections: true, mergeProps: true, classNameMergeFunction: twMerge } }}>
             <QuizHeader menu_items={menu_items} />
-            {alert && <QuizAlert />}
+            {alert && <QuizAlert items={notificationItems} />}
             <main className="overflow-x-hidden">
                 {carousel && <QuizCarousel />}
 
                 <div className="content_wrapper">
                     {leftBar && (
                         <aside
-                            className="leftbar bg-slate-700 text-white flex flex-col gap-4">
+                            className="leftbar flex flex-col gap-4">
                             <div className="w-full">
                                 <input type="text" className="rounded w-full text-black p-1 px-2" placeholder="search.."
                                     onChange={(e) => {
@@ -241,7 +245,7 @@ const AppLayout = ({
                             {
                                 leftbar.map((item, index) => {
                                     return (
-                                        <QuizLink key={index} props={item} search={leftbarSearch} />
+                                        <QuizLink key={index} item={item} search={leftbarSearch} />
                                     )
                                 })
                             }
@@ -249,7 +253,7 @@ const AppLayout = ({
                     )}
                     <div className={`w-full lg:max-w-[98%] lg:min-h-[1200px] content flex ${rightBar ? "md:col-span-2 lg:col-span-1" : "md:col-span-2"}`}>{children}</div>
                     {rightBar && (
-                        <aside className={`rightbar bg-slate-700 text-white flex flex-col gap-4`}>
+                        <aside className={`rightbar flex flex-col gap-4`}>
                             <div className="w-full">
                                 <input type="text" className="rounded w-full text-black p-1 px-2" placeholder="search.." />
                             </div>
@@ -265,7 +269,7 @@ const AppLayout = ({
                 </div>
                 {/* <QuizQuickNav /> */}
             </main>
-            <QuizFooter />
+            <QuizFooter items={footer} />
         </PrimeReactProvider>
     );
 };

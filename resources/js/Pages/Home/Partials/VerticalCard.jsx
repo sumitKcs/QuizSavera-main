@@ -4,7 +4,7 @@ import "../../../../css/blogCard.css";
 
 
 const VerticalCard = ({ title, items, limit, categoryId }) => {
-    console.log("items", items)
+    // console.log("items", items)
     // show only 5 items from props.items
     const filteredItems = items.slice(0, parseInt(limit));
 
@@ -15,11 +15,11 @@ const VerticalCard = ({ title, items, limit, categoryId }) => {
             {
                 items?.length == 0 ? '' : (
                     <div className="flex flex-col justify-between items-center border h-fit w-full">
-                        <div className="bg-[#10a19d] w-full text-center py-2 text-white font-bold">{title}</div>
+                        <div className="bg-secondary w-full text-center py-2 text-white font-bold">{title}</div>
                         <div className="flex flex-col justify-center items-center p-4 gap-8 size-full text-center">
                             {
                                 filteredItems.map((item) => {
-                                    console.log("item", item)
+                                    // console.log("item", item)
                                     const contentType = item.contentType ? item.contentType.toString().toLowerCase() : "";
                                     return (
                                         <a href={`/quiz/${item?.sid}${contentType ? `/${contentType}` : ""}`} key={item.sid} className="w-full border-b-2 inline-flex justify-start items-center gap-2">
@@ -61,7 +61,7 @@ const VerticalCard = ({ title, items, limit, categoryId }) => {
                                 })
                             }
                         </div>
-                        <div className={`bg-[#10a19d] w-full text-center ${items.length > limit ? "py-2" : "py-5"} text-white font-bold cursor-pointer flex justify-center items-center`}>
+                        <div className={`bg-primary text-blue-700 w-full text-center ${items.length > limit ? "py-2" : "py-5"}  font-bold cursor-pointer flex justify-center items-center`}>
                             {
                                 items.length > limit && (<a href={`/quiz/${categoryId}`}>View More &gt;&gt;</a>)
                             }

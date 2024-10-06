@@ -2,14 +2,14 @@ import { Head } from "@inertiajs/react";
 import AppLayout from "@/Layouts/AppLayout";
 import VerticalCard from "./Partials/VerticalCard";
 
-export default function Index({ title, sidebars, menu_items, home_layout }) {
+export default function Index({ title, sidebars, menu_items, description, content, recommended_content, keywords, views, isCategory, contentType, footer, notificationItems  }) {
     console.log("sidebars", sidebars);
     console.log("menu_items", menu_items);
     console.log("home_layout", home_layout);
     return (
         <>
             <Head title={`${title} Quiz`} />
-            <AppLayout menu_items={menu_items} sidebars={sidebars} leftBar={true} rightBar={false}>
+            <AppLayout menu_items={menu_items} sidebars={sidebars} leftBar={true} rightBar={false} carousel={false} footer={footer} notificationItems={notificationItems}>
                 <div div className="flex flex-col justify-start items-start w-full gap-4">
                     {home_layout && home_layout.length > 0 && home_layout.map((item, index) => {
 

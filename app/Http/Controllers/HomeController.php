@@ -121,13 +121,17 @@ class HomeController extends Controller
         $menuItems = $response['menuItems'];
         $views = $response['items'];
         $sidebars = $response['sidebars'];
+        $footer = $response['footer'];
+        $notificationItems = $response['notificationItems'];
 
         return Inertia::render('Home/Index', [
             'title' => $appName,
             'sidebars' => $sidebars,
             'menu_items' => $menuItems,
+            'notificationItems' => $notificationItems,
             'views' => $views,
-            'isCategory' => 0
+            'isCategory' => 0,
+            'footer' => $footer,
 
         ]);
     }
@@ -250,6 +254,8 @@ class HomeController extends Controller
         $content = $response['content'];
         $recommended_content = $response['recommended_content'];
         $keywords = $response['keywords'];
+        $footer = $response['footer'];
+        $notificationItems = $response['notificationItems'];
 
         // if contentType is null
         if ($contentType === null) {
@@ -261,9 +267,11 @@ class HomeController extends Controller
                 'keywords' => $keywords,
                 'sidebars' => $sidebars,
                 'menu_items' => $menuItems,
+                'notificationItems' => $notificationItems,
                 'views' => [],
                 'isCategory' => 1,
                 'contentType' => null,
+                'footer' => $footer,
             ]);
         }
         // if contentType is not 'category' then return to inertia route  '/quiz/{cat_id}/play' 
@@ -293,9 +301,11 @@ class HomeController extends Controller
             'keywords' => $keywords,
             'sidebars' => $sidebars,
             'menu_items' => $menuItems,
+            'notificationItems' => $notificationItems,
             'views' => $views,
             'isCategory' => 1,
             'contentType' => strtolower($contentType),
+            'footer' => $footer,
 
         ]);
     }

@@ -17,13 +17,14 @@ main {
 }
 
 .rightbar, .leftbar {
-    @apply w-full h-full  min-w-[300px];
+    border: 1px solid rgba(128, 128, 128, 0.389);
+    @apply w-full h-full  min-w-[300px] bg-primary shadow-2xl text-sidebar ;
 }
 
 .leftbar {
     padding: 1rem;
     border-top-right-radius: 8px;
-    /* border-bottom-right-radius: 8px; */
+    border-bottom-right-radius: 8px;
     overflow-y: auto;
     @apply hidden lg:flex overflow-auto;
 }
@@ -31,7 +32,7 @@ main {
 .rightbar {
     padding: 1rem;
     border-top-left-radius: 8px;
-    /* border-bottom-left-radius: 8px; */
+    border-bottom-left-radius: 8px;
     overflow-y: auto;
 
 }

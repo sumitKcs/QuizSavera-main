@@ -2,13 +2,16 @@ import { Head } from "@inertiajs/react";
 import AppLayout from "@/Layouts/AppLayout";
 import VerticalCard from "./Partials/VerticalCard";
 
-export default function Index({ title, sidebars, menu_items, description, content, recommended_content, keywords, views, isCategory, contentType }) {
+export default function Index({ title, sidebars, menu_items, description, content, recommended_content, keywords, views, isCategory, contentType, footer, notificationItems }) {
     // console.log("sidebars", sidebars);
     // console.log("menu_items", menu_items);
     // console.log("views", views);
     // console.log("isCategory", isCategory);
     // console.log("contentType", contentType);
-    console.log("description", description)
+    // console.log("description", description)
+    // console.log("footer", footer)
+    console.log('notificationItems', notificationItems)
+
 
     const contentTypeList = ["quiz, mock"]
     // check if contentType is in contentTypeList
@@ -31,7 +34,7 @@ export default function Index({ title, sidebars, menu_items, description, conten
                 <meta name="description" content={parseHtmlToText(description)} />
                 <meta name="keywords" content={keywords} />
             </Head>
-            <AppLayout menu_items={menu_items} sidebars={sidebars} leftBar={true} rightBar={false} carousel={false}>
+            <AppLayout menu_items={menu_items} sidebars={sidebars} leftBar={true} rightBar={false} carousel={false} footer={footer} notificationItems={notificationItems}>
                 <div div className="flex flex-col justify-start items-center w-full gap-4">
                     {/* category views */}
                     {views && views.length > 0 && views.map((view, index) => {

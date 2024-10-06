@@ -2,10 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer primereact;
-@import 'primereact/resources/themes/lara-light-blue/theme.css';
 
 body {
-  overflow-x: hidden;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+  -webkit-font-smoothing: antialiased !important;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* QuizAlert.css */
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
   box-sizing: border-box;
+  animation: marquee 29s linear infinite;
+  padding: 10px;
+
+}
+
+.marquee_content {
+  display: inline-flex;
+  gap: 1rem;
+}
+
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
 }

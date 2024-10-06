@@ -35,6 +35,8 @@ class QuizController extends Controller
          $items = $response['items'];
          $contentType = $response['contentType'];
          $sidebars = $response['sidebars'];
+         $footer = $response['footer'];
+         $notificationItems = $response['notificationItems'];
 
         //  if items length is 0 then return
         if(count($items) == 0) {
@@ -42,10 +44,12 @@ class QuizController extends Controller
                 'title' => $appName,
                 'sidebars'=> $sidebars,
                 'menu_items' => $menuItems,
+                'notificationItems' => $notificationItems,
                 'isCategory' => 1,
                 'contentType' => strtolower($contentType),
                 'questions' => [],
-                'quizTitle' => null
+                'quizTitle' => null,
+                'footer' => $footer
             ]);
      
         }
@@ -58,10 +62,12 @@ class QuizController extends Controller
                 'title' => $appName,
                 'sidebars'=> $sidebars,
                 'menu_items' => $menuItems,
+                'notificationItems' => $notificationItems,
                 'isCategory' => 1,
                 'contentType' => strtolower($contentType),
                 'questions' => [],
-                'quizTitle' => $quizTitle
+                'quizTitle' => $quizTitle,
+                'footer' => $footer
             ]);
      
         }
@@ -70,10 +76,12 @@ class QuizController extends Controller
              'title' => $appName,
              'sidebars'=> $sidebars,
              'menu_items' => $menuItems,
+             'notificationItems' => $notificationItems,
              'isCategory' => 1,
              'contentType' => strtolower($contentType),
              'questions' => $questions,
-             'quizTitle' => $quizTitle
+             'quizTitle' => $quizTitle,
+             'footer' => $footer
          ]);
     }
 

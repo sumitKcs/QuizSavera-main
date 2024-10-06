@@ -1,6 +1,6 @@
 
 .quiz_link_header {
-    @apply w-full bg-[#10a19d] text-white rounded px-3 py-1 font-bold;
+    @apply w-full bg-secondary text-sidebar-title rounded px-3 py-1 font-bold;
 
 }
 .navbar {
@@ -8,5 +8,5 @@
 }
 
 .navbar_link {
-    @apply  hover:text-blue-300 hover:underline;
+    @apply   hover:underline;
 }

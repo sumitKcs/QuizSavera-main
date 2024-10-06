@@ -1,13 +1,12 @@
 import "../../css/quizlink.css";
-const QuizLink = ({ props }) => {
+const QuizLink = ({ item }) => {
     return (
         <div className="flex flex-col items-start w-full">
             <h4 className="quiz_link_header ">
-                {props?.mainItemName}
+                {item.name}
             </h4>
             <nav className="navbar">
-                {props?.subItems.map((item, index) => {
-                    const contentType = item.contentType ? item.contentType.toString().toLowerCase() : "";
+                {item.contents.map((item, index) => {
 
                     return (
                         <span className="flex items-center gap-2 nav_items" key={index}>
@@ -20,7 +19,7 @@ const QuizLink = ({ props }) => {
                                 /> */}
 
                                 <svg
-                                    fill="#ffffff"
+                                    fill="#000000"
                                     version="1.1"
                                     id="Capa_1"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -46,8 +45,8 @@ const QuizLink = ({ props }) => {
                                     </g>
                                 </svg>
                             </div>
-                            <a href={`/quiz/${item?.sid}${contentType ? `/${contentType}` : ""}`}  className="navbar_link">
-                                {item?.text1st}
+                            <a href={item?.link}  className="navbar_link">
+                                {item?.name}
                             </a>
                         </span>
                     );

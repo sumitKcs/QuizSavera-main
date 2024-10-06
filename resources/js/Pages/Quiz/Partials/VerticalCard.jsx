@@ -4,7 +4,7 @@ import "../../../../css/blogCard.css";
 
 
 const VerticalCard = ({ title, items, limit }) => {
-    console.log("items", items)
+    // console.log("items", items)
      // show only 5 items from props.items
      items = items.slice(0, parseInt(limit));
 
