@@ -228,7 +228,7 @@ const AppLayout = ({
         <PrimeReactProvider value={{ unstyled: true, pt: PaginationStyle, ptOptions: { mergeSections: true, mergeProps: true, classNameMergeFunction: twMerge } }}>
             <QuizHeader menu_items={menu_items} />
             {alert && <QuizAlert items={notificationItems} />}
-            <main className="overflow-x-hidden">
+            <main className="">
                 {carousel && <QuizCarousel />}
 
                 <div className="content_wrapper">

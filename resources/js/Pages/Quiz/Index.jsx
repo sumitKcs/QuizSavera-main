@@ -7,7 +7,7 @@ export default function Index({ title, sidebars, menu_items, description, conten
     console.log("menu_items", menu_items);
     console.log("home_layout", home_layout);
     return (
-        <>
+        <div className="flex flex-col justify-start items-start w-full gap-4">
             <Head title={`${title} Quiz`} />
             <AppLayout menu_items={menu_items} sidebars={sidebars} leftBar={true} rightBar={false} carousel={false} footer={footer} notificationItems={notificationItems}>
                 <div div className="flex flex-col justify-start items-start w-full gap-4">
@@ -37,6 +37,6 @@ export default function Index({ title, sidebars, menu_items, description, conten
                     })}
                 </div>
             </AppLayout>
-        </>
+        </div>
     );
 }
