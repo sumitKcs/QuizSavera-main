@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ReactPaginate from "react-paginate";
 import "../../../css/quizcard.css";
 
 const QuizCard = ({ quiz_Cards }) => {
@@ -136,23 +135,6 @@ const QuizCard = ({ quiz_Cards }) => {
                     </article>
                 );
             })}
-
-            <ReactPaginate
-                pageCount={Math.ceil(quiz_Cards.length / itemsPerPage)}
-                activeClassName={"item active "}
-                breakClassName={"item break-me "}
-                breakLabel={"..."}
-                containerClassName={"pagination"}
-                disabledClassName={"disabled-page"}
-                pageRangeDisplayed={3}
-                marginPagesDisplayed={2}
-                nextClassName={"item next "}
-                nextLabel="next >"
-                onPageChange={handlePageChange}
-                pageClassName={"item pagination-page "}
-                previousClassName={"item previous"}
-                previousLabel="< prev"
-            />
         </>
     );
 };

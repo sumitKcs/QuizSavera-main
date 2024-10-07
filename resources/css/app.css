@@ -14,33 +14,4 @@ main {
   overflow-x: hidden !important;
 }
 
-/* QuizAlert.css */
-.marquee {
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  box-sizing: border-box;
-  animation: marquee 29s linear infinite;
-  padding: 10px;
 
-}
-
-.marquee_content {
-  display: inline-flex;
-  gap: 1rem;
-}
-
-.marquee:hover {
-  animation-play-state: paused;
-}
-
-@keyframes marquee {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
-
-@media only screen and (max-width: 640px) {
-  .marquee {
-    display: none;
-  }
-}

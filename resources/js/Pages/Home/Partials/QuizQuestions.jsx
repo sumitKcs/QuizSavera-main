@@ -2,7 +2,6 @@
 import "../../../../css/quizquestions.css";
 import SingleQuizQuestion from "./SingleQuizQuestion";
 import React, { useState, useEffect } from "react";
-import ReactPaginate from "react-paginate";
 
 const QuizQuestions = ({ questions }) => {
     console.log("questions", questions)
@@ -36,22 +35,6 @@ const QuizQuestions = ({ questions }) => {
                     <SingleQuizQuestion key={index} questionData={question} />
                 ))}
             </div>
-            <ReactPaginate
-                pageCount={Math.ceil(questions.length / itemsPerPage)}
-                activeClassName={'item active '}
-                breakClassName={'item break-me '}
-                breakLabel={'...'}
-                containerClassName={'pagination'}
-                disabledClassName={'disabled-page'}
-                pageRangeDisplayed={3}
-                marginPagesDisplayed={2}
-                nextClassName={"item next "}
-                nextLabel="next >"
-                onPageChange={handlePageChange}
-                pageClassName={'item pagination-page '}
-                previousClassName={"item previous"}
-                previousLabel="< prev"
-            />
         </div>
     );
 };

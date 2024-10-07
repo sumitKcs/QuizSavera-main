@@ -251,7 +251,7 @@ const AppLayout = ({
                             }
                         </aside>
                     )}
-                    <div className={`w-full lg:max-w-[98%] lg:min-h-[1200px] content flex ${rightBar ? "md:col-span-2 lg:col-span-1" : "md:col-span-2"}`}>{children}</div>
+                    <div className={`w-full lg:max-w-[98%] lg:min-h-[1200px] content flex ${rightBar ? "lg:col-span-1" : "md:col-span-2"}`}>{children}</div>
                     {rightBar && (
                         <aside className={`rightbar flex flex-col gap-4`}>
                             <div className="w-full">
