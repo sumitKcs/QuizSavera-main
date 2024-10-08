@@ -200,13 +200,12 @@ const AppLayout = ({
     rightBar = true,
     carousel = true,
     alert = true,
-    sidebars = null,
+    sidebars = {leftbar: [], rightbar: []},
     footer = [],
     notificationItems= []
 }) => {
 
-    const [leftbar, setLeftbar] = useState(sidebars?.leftbar ?? []);
-    const [rightbar, setRightbar] = useState(sidebars?.rightbar ?? []);
+    console.log("sidebars", sidebars);
     const [leftbarSearch, setLeftbarSearch] = useState('');
 
     console.log("footer", footer);
@@ -232,7 +231,7 @@ const AppLayout = ({
                 {carousel && <QuizCarousel />}
 
                 <div className="content_wrapper">
-                    {leftBar && (
+                    {sidebars?.leftbar.length > 0 ? (
                         <aside
                             className="leftbar flex flex-col gap-4">
                             <div className="w-full">
@@ -243,22 +242,41 @@ const AppLayout = ({
                                 />
                             </div>
                             {
-                                leftbar.map((item, index) => {
+                                sidebars?.leftbar.map((item, index) => {
                                     return (
                                         <QuizLink key={index} item={item} search={leftbarSearch} />
                                     )
                                 })
                             }
                         </aside>
-                    )}
+                    ) : (
+                        <aside
+                            className="leftbar flex flex-col gap-4">
+                            <div className="w-full">
+                                <input type="text" className="rounded w-full text-black p-1 px-2" placeholder="search.."
+                                    onChange={(e) => {
+                                        handleLeftbarSearch(e.target.value);
+                                    }}
+                                />
+                            </div>
+                            {
+                                Array(5).fill(0).map((item, index) => {
+                                    return (
+                                        <QuizLink key={index} />
+                                    )
+                                })
+                            }
+                        </aside>
+                    )
+                }
                     <div className={`w-full lg:max-w-[98%] lg:min-h-[1200px] content flex ${rightBar ? "lg:col-span-1" : "md:col-span-2"}`}>{children}</div>
-                    {rightBar && (
+                    {sidebars?.rightBar && (
                         <aside className={`rightbar flex flex-col gap-4`}>
                             <div className="w-full">
                                 <input type="text" className="rounded w-full text-black p-1 px-2" placeholder="search.." />
                             </div>
                             {
-                                rightbar.map((item, index) => {
+                                sidebars?.rightbar.map((item, index) => {
                                     return (
                                         <QuizLink key={index} props={item} />
                                     )

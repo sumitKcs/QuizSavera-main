@@ -58,7 +58,6 @@ const QuizHeader = ({ menu_items }) => {
 
     }
 
-
     return (
         <>
             <header className="bg-primary flex flex-col justify-start items-start lg:flex-row lg:justify-start px-4 py-2 gap-3 lg:gap-8  antialiased shadow-2xl border">
@@ -92,11 +91,17 @@ const QuizHeader = ({ menu_items }) => {
                         <a href="/">Home</a>
 
                         {
-                            menu_items.map((item, index) => {
+                            menu_items.length ? menu_items.map((item, index) => {
                                 return (
                                     <a href={`/quiz/${item?.id}`} key={item?.id}>{item?.name}</a>
                                 )
-                            })
+                            }) : (
+                                Array(12).fill(0).map((item, index) => {
+                                    return (
+                                        <span className="w-full hover:text-blue-700 hover:underline w-48 h-3 bg-green-300 rounded-lg animate-pulse"></span>
+                                    )
+                                })
+                            )
                         }
                     </div>
                 </aside>
@@ -114,7 +119,7 @@ const QuizHeader = ({ menu_items }) => {
                     </div>
                     {/* left side bar content */}
                     <div className="px-2 pb-6 flex mobile_menu_content_wrapper flex-col gap-4 w-full text-center overflow-y-auto">
-                       {/* menu content here */}
+                        {/* menu content here */}
                     </div>
                 </aside>
             </header>
@@ -124,11 +129,17 @@ const QuizHeader = ({ menu_items }) => {
                 <a href="/" className=" hover:text-blue-700 hover:underline ">Home</a>
 
                 {
-                    menu_items.map((item, index) => {
+                    menu_items.length? menu_items.map((item, index) => {
                         return (
                             <a href={`/quiz/${item?.id}`} key={item?.id} className=" hover:text-blue-700 hover:underline">{item?.name}</a>
                         )
-                    })
+                    }) : (
+                        Array(12).fill(0).map((item, index) => {
+                            return (
+                                <span className="hover:text-blue-700 hover:underline w-48 h-3 bg-green-300 rounded-lg animate-pulse"></span>
+                            )
+                        })
+                    )
                 }
 
                 {/* <a href="#" className="flex justify-center items-center gap-2 border border-black bg-[#4d4c7d] p-1">

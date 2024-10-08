@@ -13,102 +13,12 @@ class HomeController extends Controller
 {
     public function index(Request $request): Response
     {
-        $sidebars = [
-            "left" => [
-                [
-                    "header" => "Current Affairs Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "General Awareness Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "Current Affairs Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "General Awareness Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "Current Affairs Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "General Awareness Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-            ],
-            "right" => [
-                [
-                    "header" => "Current Affairs Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "General Awareness Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-            ],
 
-        ];
+        return Inertia::render('Home/Index');
+    }
 
+    public function indexbkp(Request $request): Response
+    {
 
         // call get-web rest api to get menu_items
         $url = env('SERVER_URL') . '/api/' . env('API_VERSION') . '/get-web';
@@ -117,6 +27,8 @@ class HomeController extends Controller
             'packageName' => 'com.quizsavera.app'
         ]);
         $response = $response->json();
+
+        // get data from response
         $appName = $response['appName'];
         $menuItems = $response['menuItems'];
         $views = $response['items'];
@@ -135,105 +47,18 @@ class HomeController extends Controller
 
         ]);
     }
+    public function categories($cat_name, $cat_id): Response
+    {
+        return Inertia::render('Home/Categories', [
+            'cat_name' => $cat_name,
+            'cat_id' => $cat_id,
 
-    public function categories($cat_id): Response
+        ]);
+    }
+
+    public function categoriesnkp($cat_name, $cat_id): Response
     {
         Log::info("cat_id: " . $cat_id);
-        $sidebars = [
-            "left" => [
-                [
-                    "header" => "Current Affairs Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "General Awareness Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "Current Affairs Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "General Awareness Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "Current Affairs Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "General Awareness Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-            ],
-            "right" => [
-                [
-                    "header" => "Current Affairs Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-                [
-                    "header" => "General Awareness Quiz (1280)",
-                    "links" => [
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                        "Current Affairs Quiz - November, 2023",
-                    ],
-                ],
-            ],
-
-        ];
 
 
         // call get-web rest api to get menu_items
@@ -270,7 +95,6 @@ class HomeController extends Controller
                 'notificationItems' => $notificationItems,
                 'views' => [],
                 'isCategory' => 1,
-                'contentType' => null,
                 'footer' => $footer,
             ]);
         }
@@ -293,7 +117,7 @@ class HomeController extends Controller
         }
 
 
-        return Inertia::render('Home/Index', [
+        return Inertia::render('Home/Categories', [
             'title' => $appName,
             'description' => $description,
             'content' => $content,
@@ -304,7 +128,6 @@ class HomeController extends Controller
             'notificationItems' => $notificationItems,
             'views' => $views,
             'isCategory' => 1,
-            'contentType' => strtolower($contentType),
             'footer' => $footer,
 
         ]);

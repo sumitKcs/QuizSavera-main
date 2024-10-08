@@ -1,42 +1,59 @@
 import { Head } from "@inertiajs/react";
+import "../../../css/info.css";
+import QuizQuestions from "./Partials/QuizQuestions";
 import AppLayout from "@/Layouts/AppLayout";
-import VerticalCard from "./Partials/VerticalCard";
+import { useEffect, useState } from "react";
 
-export default function Index({ title, sidebars, menu_items, description, content, recommended_content, keywords, views, isCategory, contentType, footer, notificationItems  }) {
-    console.log("sidebars", sidebars);
-    console.log("menu_items", menu_items);
-    console.log("home_layout", home_layout);
+export default function Questions({cat_name, cat_id}) {
+    const url = import.meta.env.VITE_SERVER_URL + '/api/' + import.meta.env.VITE_API_VERSION + '/get-web-page-data'
+
+    // const [responseData, setResponseData] = useState(null);
+    const [title, setTitle] = useState('');
+    const [sidebars, setSidebars] = useState({leftbar: [], rightbar: []});
+    const [menu_items, setMenuItems] = useState([]);
+    const [notificationItems, setNotificationItems] = useState([]);
+    const [isCategory, setIsCategory] = useState(1);
+    const [contentType, setContentType] = useState('');
+    const [questions, setQuestions] = useState([]);
+    const [quiz_title, setQuizTitle] = useState('');
+    const [footer, setFooter] = useState([]);
+
+
+    useEffect(() => {
+        const postData = async () => {
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({  
+                'packageName' : import.meta.env.VITE_PACKAGE_NAME,
+                'catId': cat_id,
+                'device': 'web'
+            }),
+          });
+          const result = await response.json();
+          console.log(result);
+          console.log(result.sidebars);
+          setTitle(result.appName);
+          setMenuItems(result.menuItems);
+          setSidebars(result.sidebars);
+          setFooter(result.footer);
+          setNotificationItems(result.notificationItems);
+          setQuizTitle(result.items[0]['mainItemName']);
+          setQuestions(result.items[0]['subItems']);
+          setContentType(result.contentType);
+
+        };
+    
+        postData();
+      }, []);
     return (
-        <div className="flex flex-col justify-start items-start w-full gap-4">
+        <>
             <Head title={`${title} Quiz`} />
             <AppLayout menu_items={menu_items} sidebars={sidebars} leftBar={true} rightBar={false} carousel={false} footer={footer} notificationItems={notificationItems}>
-                <div div className="flex flex-col justify-start items-start w-full gap-4">
-                    {home_layout && home_layout.length > 0 && home_layout.map((item, index) => {
-
-                        if (item.level == 2) {
-                            return (
-                                <>
-                                    <h2 className="text-lg font-semibold">{item.mainItemName}</h2>
-                                    <div key={item.sid} className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 w-full gap-4">
-                                        {
-                                            item.subItems.map((subitem) => {
-                                                return (
-                                                    <VerticalCard key={subitem.sid} title={subitem.text1st} items={subitem.subItems} limit={5} />
-                                                )
-                                            })
-                                        }
-                                    </div>
-                                </>
-                            )
-                        }
-                        return (
-                            <div key={item.sid}>
-                                <h2>{item.mainItemName}</h2>
-                            </div>
-                        );
-                    })}
-                </div>
+                <QuizQuestions questions={questions} title={quiz_title} itemsPerPageVal={3} />
             </AppLayout>
-        </div>
+        </>
     );
 }

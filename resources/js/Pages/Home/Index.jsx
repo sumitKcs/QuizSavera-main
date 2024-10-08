@@ -1,29 +1,65 @@
 import { Head } from "@inertiajs/react";
 import AppLayout from "@/Layouts/AppLayout";
 import VerticalCard from "./Partials/VerticalCard";
+import { useEffect, useState } from "react";
 
-export default function Index({ title, sidebars, menu_items, description, content, recommended_content, keywords, views, isCategory, contentType, footer, notificationItems }) {
-    // console.log("sidebars", sidebars);
-    // console.log("menu_items", menu_items);
-    // console.log("views", views);
-    // console.log("isCategory", isCategory);
-    // console.log("contentType", contentType);
-    // console.log("description", description)
-    // console.log("footer", footer)
-    console.log('notificationItems', notificationItems)
+export default function Index() {
+
+    const url = import.meta.env.VITE_SERVER_URL + '/api/' + import.meta.env.VITE_API_VERSION + '/get-web'
+
+    // const [responseData, setResponseData] = useState(null);
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [keywords, setKeywords] = useState('');
+    const [content, setContent] = useState('');
+    const [recommended_content, setRecommendedContent] = useState('');
+    const [sidebars, setSidebars] = useState({leftbar: [], rightbar: []});
+    const [menu_items, setMenuItems] = useState([]);
+    const [views, setViews] = useState([]);
+    const [isCategory, setIsCategory] = useState(0);
+    const [notificationItems, setNotificationItems] = useState([]);
+    const [footer, setFooter] = useState([]);
+
+
 
 
     const contentTypeList = ["quiz, mock"]
     // check if contentType is in contentTypeList
-    if (contentType == 'mock' || contentType == 'quiz') {
-        // redirect to quiz/play
-        window.location.href = "/quiz/play"
-    }
+    // if (contentType == 'mock' || contentType == 'quiz') {
+    //     // redirect to quiz/play
+    //     window.location.href = "/quiz/play"
+    // }
     const parseHtmlToText = (htmlContent) => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlContent, 'text/html');
         return doc.body.textContent || '';
     };
+
+
+
+    useEffect(() => {
+        const postData = async () => {
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({  'packageName' : import.meta.env.VITE_PACKAGE_NAME}),
+          });
+          const result = await response.json();
+          console.log(result);
+          console.log(result.sidebars);
+          setTitle(result.appName);
+          setMenuItems(result.menuItems);
+          setViews(result.items);
+          setSidebars(result.sidebars);
+          setFooter(result.footer);
+          setNotificationItems(result.notificationItems);
+        };
+    
+        postData();
+      }, []);
+
 
 
     return (
@@ -37,7 +73,7 @@ export default function Index({ title, sidebars, menu_items, description, conten
             <AppLayout menu_items={menu_items} sidebars={sidebars} leftBar={true} rightBar={false} carousel={false} footer={footer} notificationItems={notificationItems}>
                 <div div className="flex flex-col justify-start items-center w-full gap-4">
                     {/* category views */}
-                    {views && views.length > 0 && views.map((view, index) => {
+                    {views && views.length > 0 ? views.map((view, index) => {
                         const mainItemType = view.mainItemType;
 
                         console.log("mainItemType", mainItemType);
@@ -53,6 +89,7 @@ export default function Index({ title, sidebars, menu_items, description, conten
                                         <div key={view.sid} className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 w-full gap-4">
                                             {
                                                 view.subItems.map((subitem) => {
+                                                    console.log("rendering vertical card");
                                                     return (
                                                         <VerticalCard key={subitem.sid} title={subitem.text1st} categoryId={subitem.mid} items={subitem.subItems} limit={2} />
                                                     )
@@ -89,7 +126,7 @@ export default function Index({ title, sidebars, menu_items, description, conten
                                                                                     const contentType = subsubitem.contentType ? subsubitem.contentType.toString().toLowerCase() : "";
                                                                                     return (
                                                                                         <li>
-                                                                                            <a href={`/quiz/${subsubitem?.sid}${contentType ? `/${contentType}` : ""}`} key={subsubitem.sid} className="underline text-blue-700 pr-3">{subsubitem.text1st}</a>
+                                                                                            <a href={`/${subsubitem?.text1st.toLowerCase()}/${subsubitem?.sid}${contentType ? `/${contentType}` : ""}`} key={subsubitem.sid} className="underline text-blue-700 pr-3">{subsubitem.text1st}</a>
                                                                                         </li>
                                                                                     )
                                                                                 })
@@ -213,7 +250,29 @@ export default function Index({ title, sidebars, menu_items, description, conten
                                 </div>
                             </>
                         )
-                    })}
+                    }
+                ): (
+                    Array(10).fill(0).map((item, index) => {
+                        return (
+                            <>
+                                {/* category name */}
+                                <h2 className="text-lg font-semibold text-center w-full h-10 bg-gray-300 pt-5 animate-pulse rounded-lg"></h2>
+                                <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 w-full gap-4">
+                                    {
+                                        Array(6).fill(0).map((item, index) => {
+                                            console.log("rendering vertical card");
+                                            return (
+                                                <VerticalCard key={index} limit={5} />
+                                            )
+                                        })
+                                    }
+                                </div>
+                            </>
+                        )
+                    })
+                )
+            
+            }
 
                     {/* category content */}
                     {

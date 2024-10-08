@@ -9,18 +9,17 @@ use Inertia\Response;
 
 class QuizController extends Controller
 {
-    public function index(Request $request): Response
+    public function index(Request $request, $cat_name, $cat_id): Response
     {
-
-        return Inertia::render('Quiz/Index', [
-            'data' => [],
-        ]);
+        
+         return Inertia::render('Quiz/Index', [
+             'cat_name' => $cat_name,
+             'cat_id'=> $cat_id,
+         ]);
     }
 
-    public function quizQuestions(Request $request, $cat_id): Response
+    public function indexbkp(Request $request, $cat_name, $cat_id): Response
     {
-
-
          // call get-web rest api to get menu_items
          $url = env('SERVER_URL') .'/api/'. env('API_VERSION')  . '/get-web-page-data';
 
@@ -48,7 +47,7 @@ class QuizController extends Controller
                 'isCategory' => 1,
                 'contentType' => strtolower($contentType),
                 'questions' => [],
-                'quizTitle' => null,
+                'quiz_title' => null,
                 'footer' => $footer
             ]);
      
@@ -66,7 +65,7 @@ class QuizController extends Controller
                 'isCategory' => 1,
                 'contentType' => strtolower($contentType),
                 'questions' => [],
-                'quizTitle' => $quizTitle,
+                'quiz_title' => $quizTitle,
                 'footer' => $footer
             ]);
      
@@ -80,10 +79,11 @@ class QuizController extends Controller
              'isCategory' => 1,
              'contentType' => strtolower($contentType),
              'questions' => $questions,
-             'quizTitle' => $quizTitle,
+             'quiz_title' => $quizTitle,
              'footer' => $footer
          ]);
     }
+
 
    
     public function play($cat_id): Response
