@@ -37,7 +37,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/{cat_name}/{cat_id}', [HomeController::class, 'categories'])->name('Home.categories');
 Route::get('/{cat_name}/{cat_id}/quiz', [QuizController::class, 'index'])->name('quiz.index');
 Route::get('/{cat_name}/{cat_id}/mock', [QuizController::class, 'play'])->name('quiz.play');
-Route::get('/{cat_name}/{cat_id}/analytics', [QuizController::class, 'analytics'])->name('quiz.analytics');
+Route::get('/{cat_name}/{cat_id}/analytics', [QuizController::class, 'analytics'])->name(name: 'analytics.index');
 Route::get('/blog/{id}', [BlogController::class, 'content'])->name('blog.content');
 // Route::get('/longanswer', [QuizController::class, 'longAnswer'])->name('longAnswer.index');
 Route::get('/privacy-policy', [PrivacyPolicy::class, 'index'])->name('privacyPolicy.content');

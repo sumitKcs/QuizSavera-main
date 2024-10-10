@@ -67,13 +67,13 @@ const QuizHeader = ({ menu_items }) => {
                     {/* brand name */}
                    <div className=" lg:col-start-2 lg:w-full">
                    <a href="/" className="flex justify-center">
-                        <img src="/quizsavera_logo.png" alt="" srcset=""  height={450} />
+                        <img src="/quizsavera_logo.webp" alt="" srcset=""  height={450} fetchPriority="high" loading="eager" />
                     </a>
                    </div>
                     {/* download app button */}
                     <div className=" lg:col-start-3 hidden lg:flex justify-end items-center gap-2">
                     <a href="#" className="flex justify-center items-center gap-2 bg-secondary text-white font-bold px-3 py-2 rounded w-36">
-                        <img src="/google-play.png" alt="" width="20" height="30" />
+                        <img src="/google-play.webp" alt="" width="20" height="30" fetchPriority="high" loading="eager"  />
                         <span
                             className="text-sm whitespace-nowrap"
                         >
@@ -94,7 +94,7 @@ const QuizHeader = ({ menu_items }) => {
                 <aside className={`${toggleMobileMenu ? "flex" : "hidden"} flex-col justify-start items-start overflow-hidden bg-primary text-menu font-semibold gap-4 fixed top-0 left-0 z-50 h-screen w-full`} >
                     <div className="w-full flex justify-between text-black p-2  " onClick={() => setToggleMobileMenu(false)}>
                     <a href="/" className="flex justify-center">
-                        <img src="quizsavera_logo.png" alt="" srcset=""  height={450} />
+                        <img src="quizsavera_logo.webp" alt="" srcset=""  height={450} />
                     </a>
 
                             {/* close icon */}
@@ -129,7 +129,7 @@ const QuizHeader = ({ menu_items }) => {
           
                     <div className="w-full flex justify-between text-black p-2  " onClick={() => setToggleMobileSideBar(false)}>
                     <a href="/" className="flex justify-center">
-                        <img src="quizsavera_logo.png" alt="" srcset=""  height={450} />
+                        <img src="quizsavera_logo.webp" alt="" srcset=""  height={450} />
                     </a>
                               {/* close icon */}
                         <p>
@@ -164,7 +164,7 @@ const QuizHeader = ({ menu_items }) => {
                 }
 
                 {/* <a href="#" className="flex justify-center items-center gap-2 border border-black bg-[#4d4c7d] p-1">
-    <img src="/google-play.png" alt="" width="20" height="30" />
+    <img src="/google-play.webp" alt="" width="20" height="30" />
     <span
         className="text-sm"
     >

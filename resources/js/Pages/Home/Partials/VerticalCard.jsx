@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import "../../../../css/blogCard.css";
 import { Link } from '@inertiajs/react';
 

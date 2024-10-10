@@ -2,7 +2,6 @@
 import AppLayout from "@/Layouts/AppLayout";
 import VerticalCard from "./Partials/VerticalCard";
 import { useEffect, useState } from "react";
-import {useHomeLayoutStore} from "@/store/homeLayout";
 
 export default function Index() {
 

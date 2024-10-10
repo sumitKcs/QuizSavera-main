@@ -3,9 +3,6 @@ import "../../../../css/quizquestions.css";
 import SingleQuizQuestion from "./SingleQuizQuestion";
 import React, { useState, useEffect } from "react";
 import { Paginator } from 'primereact/paginator';
-// import 'primereact/resources/themes/lara-light-indigo/theme.css';
-// import 'primereact/resources/primereact.min.css'
-// import 'primeicons/primeicons.css';
 
 
 const QuizQuestions = ({ questions = [], title = '', itemsPerPageVal=5 }) => {
@@ -16,9 +13,6 @@ const QuizQuestions = ({ questions = [], title = '', itemsPerPageVal=5 }) => {
     const [lang, setLang] = useState("en");
     const [itemsPerPage, setItemsPerPage] = useState(itemsPerPageVal ?? 10);
     let questionNumber = firstQuestionIndex;
-
-
-    console.log("questions", questions);
 
 
     const onPageChange = (event) => {

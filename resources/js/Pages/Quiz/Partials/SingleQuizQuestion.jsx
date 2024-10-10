@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import "../../../../css/quizquestions.css";
-import { useState } from "react";
+import { useEffect,useState } from "react";
 
 const SingleQuizQuestion = ({ questionData = {}, index, lang }) => {
     const [showAnswer, setShowAnswer] = useState(false);

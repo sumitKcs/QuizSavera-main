@@ -44,6 +44,13 @@
     @apply text-footer text-sm;
     /* @apply text-blue-700 */
 }
+.footer_nav2 {
+    @apply flex flex-wrap gap-4 justify-center items-center text-white w-full  ;
+}
+.footer_nav2_link {
+    @apply text-footer text-sm hover:underline hover:font-extrabold hover:text-blue-500;
+    /* @apply text-blue-700 */
+}
 .footer_copyright {
     @apply text-footer text-sm text-center w-full flex-1;
     /* @apply text-blue-700 */

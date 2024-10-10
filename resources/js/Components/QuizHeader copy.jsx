@@ -93,7 +93,7 @@ const QuizHeader = ({ menu_items }) => {
                 }
 
                 {/* <a href="#" className="flex justify-center items-center gap-2 border border-black bg-[#4d4c7d] p-1">
-                    <img src="/google-play.png" alt="" width="20" height="30" />
+                    <img src="/google-play.webp" alt="" width="20" height="30" />
                     <span
                         className="text-sm"
                     >

@@ -14,7 +14,7 @@ const QuizNav = () => {
                 <a href="#">E-books</a>
                 <a href="#">Printed Books</a>
                 <a href="#" className="flex justify-center items-center gap-2 border border-black bg-[#4d4c7d] ml-5">
-                    <img src="/google-play.png" alt="" width="20" height="30" />
+                    <img src="/google-play.webp" alt="" width="20" height="30" />
                     <span
                         className=""
                     >

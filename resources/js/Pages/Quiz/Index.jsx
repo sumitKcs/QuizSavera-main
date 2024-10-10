@@ -1,4 +1,3 @@
-import { Head } from "@inertiajs/react";
 import "../../../css/info.css";
 import QuizQuestions from "./Partials/QuizQuestions";
 import AppLayout from "@/Layouts/AppLayout";
