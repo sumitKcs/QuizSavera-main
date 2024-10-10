@@ -20,13 +20,13 @@
 }
 .qq_header {
     font-size: 1.3rem;
-    font-weight: 900;
     color: #10a19d;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #e4ffff;
     width: 100%;
+
+    @apply bg-secondary  text-white font-bold;
 }
 .qq_option {
     display: flex;

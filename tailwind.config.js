@@ -14,15 +14,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#ffffff",
-        secondary: "#2aac75",
-        tertiary: "#e0e2db",
+        primary: "#000000",
+        secondary: "#8a88ad",
+        tertiary: "#000000",
         brand: "#2aac75",
         'menu': "#ffffff",
         'menu-hover': "#000000",
         'menu-active': "#000000",
         'menu-active-hover': "#000000",
-        'sidebar': "#000000",
+        'sidebar': "#ffffff",
         'sidebar-hover': "#000000",
         'sidebar-active': "#000000",
         'sidebar-active-hover': "#000000",
@@ -30,7 +30,7 @@ export default {
         'sidebar-title-hover': "#000000",
         'sidebar-title-active': "#000000",
         'sidebar-title-active-hover': "#000000",
-        'footer': "#000000",
+        'footer': "#ffffff",
         'footer-hover': "#000000",
         'footer-active': "#000000",
         'footer-active-hover': "#000000",

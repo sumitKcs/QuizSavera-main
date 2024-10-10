@@ -8,10 +8,12 @@ body {
   box-sizing: border-box !important;
   -webkit-font-smoothing: antialiased !important;
   font-family: 'Poppins', sans-serif !important;
+  @apply bg-slate-900 lg:px-5;
 }
 
 main {
   overflow-x: hidden !important;
+  @apply bg-slate-700;
 }
 
 

@@ -9,7 +9,7 @@ const QuizAlert = ({ items }) => {
             <div className='inline-flex gap-8 lg:gap-4'>
                 {
                 items?.length ? items.map((item, index) => (
-                    item?.link && <a key={index} href={item?.link} className="text-blue-700 font-semibold cursor-pointer pl-4">
+                    item?.link && <a key={index} href={item?.link} className=" text-orange-400 font-extrabold hover:text-blue-600 cursor-pointer pl-4">
                         {item?.name}
                     </a>
                 )) : (<>

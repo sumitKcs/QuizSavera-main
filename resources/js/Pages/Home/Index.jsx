@@ -1,43 +1,22 @@
-import { Head } from "@inertiajs/react";
+
 import AppLayout from "@/Layouts/AppLayout";
 import VerticalCard from "./Partials/VerticalCard";
 import { useEffect, useState } from "react";
+import {useHomeLayoutStore} from "@/store/homeLayout";
 
 export default function Index() {
 
-    const url = import.meta.env.VITE_SERVER_URL + '/api/' + import.meta.env.VITE_API_VERSION + '/get-web'
-
-    // const [responseData, setResponseData] = useState(null);
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [keywords, setKeywords] = useState('');
-    const [content, setContent] = useState('');
-    const [recommended_content, setRecommendedContent] = useState('');
-    const [sidebars, setSidebars] = useState({leftbar: [], rightbar: []});
-    const [menu_items, setMenuItems] = useState([]);
     const [views, setViews] = useState([]);
     const [isCategory, setIsCategory] = useState(0);
-    const [notificationItems, setNotificationItems] = useState([]);
-    const [footer, setFooter] = useState([]);
-
-
-
-
-    const contentTypeList = ["quiz, mock"]
-    // check if contentType is in contentTypeList
-    // if (contentType == 'mock' || contentType == 'quiz') {
-    //     // redirect to quiz/play
-    //     window.location.href = "/quiz/play"
-    // }
-    const parseHtmlToText = (htmlContent) => {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(htmlContent, 'text/html');
-        return doc.body.textContent || '';
-    };
-
+    const [content, setContent] = useState('');
+    const [recommended_content, setRecommendedContent] = useState('');
 
 
     useEffect(() => {
+        const url = import.meta.env.VITE_SERVER_URL + '/api/' + import.meta.env.VITE_API_VERSION + '/get-web'
         const postData = async () => {
           const response = await fetch(url, {
             method: 'POST',
@@ -50,11 +29,11 @@ export default function Index() {
           console.log(result);
           console.log(result.sidebars);
           setTitle(result.appName);
-          setMenuItems(result.menuItems);
+          setDescription(result.description);
+          setKeywords(result.keywords);
           setViews(result.items);
-          setSidebars(result.sidebars);
-          setFooter(result.footer);
-          setNotificationItems(result.notificationItems);
+          setContent(result.content);
+          setRecommendedContent(result.recommendedContent);
         };
     
         postData();
@@ -64,13 +43,7 @@ export default function Index() {
 
     return (
         <>
-            <Head>
-                <title>{`${title} Quiz`}</title>
-                {/* parsed html description as plain text and set as description */}
-                <meta name="description" content={parseHtmlToText(description)} />
-                <meta name="keywords" content={keywords} />
-            </Head>
-            <AppLayout menu_items={menu_items} sidebars={sidebars} leftBar={true} rightBar={false} carousel={false} footer={footer} notificationItems={notificationItems}>
+            <AppLayout title={title} description={description} keywords={keywords} leftBar={true} rightBar={false} carousel={false}>
                 <div div className="flex flex-col justify-start items-center w-full gap-4">
                     {/* category views */}
                     {views && views.length > 0 ? views.map((view, index) => {

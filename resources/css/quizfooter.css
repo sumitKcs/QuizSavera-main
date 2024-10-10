@@ -1,5 +1,5 @@
 .footer {
-    @apply w-full  h-fit bg-tertiary flex flex-col justify-between items-center border border-gray-300 mt-4 py-2 gap-8;
+    @apply w-full  h-fit bg-tertiary flex flex-col justify-between items-center mt-4 py-2 gap-8;
 }
 
 .footer_col_container {

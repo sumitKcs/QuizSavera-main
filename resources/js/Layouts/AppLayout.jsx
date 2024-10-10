@@ -1,16 +1,16 @@
 import "../../css/quizlayout.css";
-import { useState } from "react";
+import { Head } from "@inertiajs/react";
+import { useState, useEffect } from "react";
 import QuizCarousel from "@/Components/QuizCarousel";
 import QuizLink from "@/Components/QuizLink";
 import QuizFooter from "@/Components/QuizFooter";
-import QuizQuickNav from "@/Components/QuizQuickNav";
-import QuizNav from "@/Components/QuizNav";
 import QuizAlert from "@/Components/QuizAlert";
 import QuizHeader from "@/Components/QuizHeader";
 import { PrimeReactProvider } from "primereact/api";
-import Tailwind from 'primereact/passthrough/tailwind';
 import classNames from 'classnames';
 import { twMerge } from 'tailwind-merge';
+import Tailwind from 'primereact/passthrough/tailwind';
+import { useHomeLayoutStore } from "@/store/homeLayout";
 
 const PaginationStyle = {
     paginator: {
@@ -192,23 +192,52 @@ const PaginationStyle = {
     }
 }
 
+const parseHtmlToText = (htmlContent) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlContent, 'text/html');
+    return doc.body.textContent || '';
+};
+
 
 const AppLayout = ({
     children,
-    menu_items,
+    title,
+    description,
+    keywords,
     leftBar = true,
     rightBar = true,
     carousel = true,
     alert = true,
-    sidebars = {leftbar: [], rightbar: []},
-    footer = [],
-    notificationItems= []
 }) => {
-
-    console.log("sidebars", sidebars);
+    const { homeLayout, setMenu, setNotifications, setSidebars, setFooter } = useHomeLayoutStore();
+    const { menu_items, notifications, sidebars, footer } = homeLayout
     const [leftbarSearch, setLeftbarSearch] = useState('');
 
-    console.log("footer", footer);
+
+    useEffect(() => {
+        //if menu_items is empty fetch the menu_items from the server
+        if (menu_items.length == 0) {
+            const url = import.meta.env.VITE_SERVER_URL + '/api/' + import.meta.env.VITE_API_VERSION + '/get-web'
+            const postData = async () => {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ 'packageName': import.meta.env.VITE_PACKAGE_NAME }),
+                });
+                const result = await response.json();
+                setMenu(result.menuItems);
+                setNotifications(result.notificationItems);
+                setSidebars(result.sidebars);
+                setFooter(result.footer);
+            };
+
+            postData();
+        }
+
+     
+    }, []);
 
     const handleLeftbarSearch = (search) => {
         // filter leftbar based on search
@@ -224,9 +253,15 @@ const AppLayout = ({
     };
 
     return (
-        <PrimeReactProvider value={{ unstyled: true, pt: PaginationStyle, ptOptions: { mergeSections: true, mergeProps: true, classNameMergeFunction: twMerge } }}>
+        <PrimeReactProvider value={{ unstyled: true, pt: Tailwind, ptOptions: { mergeSections: true, mergeProps: true, classNameMergeFunction: twMerge } }}>
+            <Head>
+                <title>{`${title} Quiz`}</title>
+                {/* parsed html description as plain text and set as description */}
+                <meta name="description" content={parseHtmlToText(description)} />
+                <meta name="keywords" content={keywords} />
+            </Head>
             <QuizHeader menu_items={menu_items} />
-            {alert && <QuizAlert items={notificationItems} />}
+            {alert && <QuizAlert items={notifications} />}
             <main className="">
                 {carousel && <QuizCarousel />}
 
@@ -253,7 +288,7 @@ const AppLayout = ({
                         <aside
                             className="leftbar flex flex-col gap-4">
                             <div className="w-full">
-                                <input type="text" className="rounded w-full text-black p-1 px-2" placeholder="search.."
+                                <input type="text" className="rounded w-full text-black bg-slate-800 p-1 px-2" placeholder="search.."
                                     onChange={(e) => {
                                         handleLeftbarSearch(e.target.value);
                                     }}
@@ -268,7 +303,7 @@ const AppLayout = ({
                             }
                         </aside>
                     )
-                }
+                    }
                     <div className={`w-full lg:max-w-[98%] lg:min-h-[1200px] content flex ${rightBar ? "lg:col-span-1" : "md:col-span-2"}`}>{children}</div>
                     {sidebars?.rightBar && (
                         <aside className={`rightbar flex flex-col gap-4`}>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../../../../css/blogCard.css";
+import { Link } from '@inertiajs/react';
 
 
 const VerticalCard = ({ title='', items=[], limit=5, categoryId=null }) => {
@@ -7,13 +8,11 @@ const VerticalCard = ({ title='', items=[], limit=5, categoryId=null }) => {
     // show only 5 items from props.items
     const filteredItems = items?.length ? items.slice(0, parseInt(limit)) : [];
 
-
     return (
-        // <div div className="flex flex-col justify-start items-start w-full gap-4">
         <>
-             <div className="flex flex-col justify-between items-center border h-fit w-full">
+             <div className="flex flex-col justify-between items-center h-fit w-full verticalcard_wrapper">
                         {
-                            title ? <div className="bg-secondary w-full text-center py-2 text-white font-bold">{title}</div> :
+                            title ? <div className="bg-secondary w-full text-center py-2 text-white font-bold vaerticlcard_title">{title}</div> :
                             <div className="bg-secondary w-full h-10 text-center py-2 font-bold text-secondary"></div>
                         }
                         <div className="flex flex-col justify-center items-center p-4 gap-8 size-full text-center">
@@ -22,10 +21,10 @@ const VerticalCard = ({ title='', items=[], limit=5, categoryId=null }) => {
                                     // console.log("item", item)
                                     const contentType = item.contentType ? item.contentType.toString().toLowerCase() : "";
                                     return (
-                                        <a href={`/${title.toLowerCase()}/${item?.sid}${contentType ? `/${contentType}` : ""}`} key={item.sid} className="w-full border-b-2 inline-flex justify-start items-center gap-2">
+                                        <Link href={`/${title.toLowerCase()}/${item?.sid}${contentType ? `/${contentType}` : ""}`} key={item.sid} className="w-full border-b-2 inline-flex justify-start items-center gap-2 hover:text-blue-600 hover:font-extrabold">
                                             <span>
                                                 <svg
-                                                    fill="#000000"
+                                                    fill="#ffffff"
                                                     version="1.1"
                                                     id="Capa_1"
                                                     xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +55,7 @@ const VerticalCard = ({ title='', items=[], limit=5, categoryId=null }) => {
                                                 {item.text1st}
                                             </span>
 
-                                        </a>
+                                        </Link>
                                     )
                                 }) : (
                                     Array(limit).fill(0).map((item, index) => {
@@ -101,7 +100,7 @@ const VerticalCard = ({ title='', items=[], limit=5, categoryId=null }) => {
                                 )
                             }
                         </div>
-                        <div className={`bg-primary text-blue-700 w-full text-center ${items.length > limit ? "py-2" : "py-5"}  font-bold cursor-pointer flex justify-center items-center`}>
+                        <div className={`bg-primary text-orange-400  w-full text-center ${items.length > limit ? "py-2" : "py-5"}  font-bold cursor-pointer flex justify-center items-center`}>
                             {
                                 items.length > limit && (<a href={`/${title.toLowerCase()}/${categoryId}`}>View More &gt;&gt;</a>)
                             }

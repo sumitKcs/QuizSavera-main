@@ -3,23 +3,23 @@ import "../../../css/info.css";
 import QuizQuestions from "./Partials/QuizQuestions";
 import AppLayout from "@/Layouts/AppLayout";
 import { useEffect, useState } from "react";
+import {useHomeLayoutStore} from "@/store/homeLayout";
 
 export default function Questions({cat_name, cat_id}) {
-    const url = import.meta.env.VITE_SERVER_URL + '/api/' + import.meta.env.VITE_API_VERSION + '/get-web-page-data'
-
+  const { homeLayout } = useHomeLayoutStore();
+  const { menu_items, notifications, sidebars, footer } = homeLayout
     // const [responseData, setResponseData] = useState(null);
     const [title, setTitle] = useState('');
-    const [sidebars, setSidebars] = useState({leftbar: [], rightbar: []});
-    const [menu_items, setMenuItems] = useState([]);
-    const [notificationItems, setNotificationItems] = useState([]);
+    const [description, setDescription] = useState('');
+    const [keywords, setKeywords] = useState('');
+    const [content, setContent] = useState('');
     const [isCategory, setIsCategory] = useState(1);
-    const [contentType, setContentType] = useState('');
     const [questions, setQuestions] = useState([]);
     const [quiz_title, setQuizTitle] = useState('');
-    const [footer, setFooter] = useState([]);
 
 
     useEffect(() => {
+        const url = import.meta.env.VITE_SERVER_URL + '/api/' + import.meta.env.VITE_API_VERSION + '/get-web-page-data';
         const postData = async () => {
           const response = await fetch(url, {
             method: 'POST',
@@ -36,23 +36,19 @@ export default function Questions({cat_name, cat_id}) {
           console.log(result);
           console.log(result.sidebars);
           setTitle(result.appName);
-          setMenuItems(result.menuItems);
-          setSidebars(result.sidebars);
-          setFooter(result.footer);
-          setNotificationItems(result.notificationItems);
+          setDescription(result.description);
+          setKeywords(result.keywords);
           setQuizTitle(result.items[0]['mainItemName']);
           setQuestions(result.items[0]['subItems']);
-          setContentType(result.contentType);
-
+          setContent(result.content);
         };
     
         postData();
       }, []);
     return (
         <>
-            <Head title={`${title} Quiz`} />
-            <AppLayout menu_items={menu_items} sidebars={sidebars} leftBar={true} rightBar={false} carousel={false} footer={footer} notificationItems={notificationItems}>
-                <QuizQuestions questions={questions} title={quiz_title} itemsPerPageVal={3} />
+             <AppLayout title={title} description={description} keywords={keywords} leftBar={true} rightBar={false} carousel={false}>
+                <QuizQuestions questions={questions} title={quiz_title} itemsPerPageVal={10} />
             </AppLayout>
         </>
     );

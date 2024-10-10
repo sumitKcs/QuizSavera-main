@@ -8,5 +8,5 @@
 }
 
 .navbar_link {
-    @apply   hover:underline;
+    @apply   hover:underline hover:text-blue-600 hover:font-extrabold;
 }

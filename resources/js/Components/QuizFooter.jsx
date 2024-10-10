@@ -18,7 +18,7 @@ const QuizFooter = ({ items }) => {
                                     item.contents.map((item, index) => {
                                         return (
                                             <li>
-                                                <a href={item?.link} className="footer_link  hover:underline">{item?.name}</a>
+                                                <a href={item?.link} className="footer_link  hover:underline hover:text-blue-600 hover:font-extrabold">{item?.name}</a>
                                             </li>
                                         )
                                     })

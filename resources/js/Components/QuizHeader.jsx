@@ -60,14 +60,29 @@ const QuizHeader = ({ menu_items }) => {
 
     return (
         <>
-            <header className="bg-primary flex flex-col justify-start items-start lg:flex-row lg:justify-start px-4 py-2 gap-3 lg:gap-8  antialiased shadow-2xl border">
-                <div className="flex gap-2 w-full lg:w-fit ">
+            <header className="bg-primary flex flex-col justify-start items-start lg:flex-row lg:justify-start gap-3 py-4 lg:gap-8  antialiased shadow-2xl ">
+                <div className="flex  justify-between items-center px-4 lg:grid lg:grid-cols-3  w-full">
                     {/* mobile menu icon */}
-                    <span className={`${!toggleMobileMenu ? "flex" : "hidden"} lg:hidden`} onClick={handleMobileMenu}>&#9776;</span>
+                    <div className={`${!toggleMobileMenu ? "flex" : "hidden"} lg:hidden text-white w-10`} onClick={handleMobileMenu}>&#9776;</div>
                     {/* brand name */}
-                    <a href="/" className="flex-1 text-center lg:text-left text-brand font-extrabold"><span className="text-xl font-extrabold">{import.meta.env.VITE_APP_NAME}</span></a>
+                   <div className=" lg:col-start-2 lg:w-full">
+                   <a href="/" className="flex justify-center">
+                        <img src="/quizsavera_logo.png" alt="" srcset=""  height={450} />
+                    </a>
+                   </div>
+                    {/* download app button */}
+                    <div className=" lg:col-start-3 hidden lg:flex justify-end items-center gap-2">
+                    <a href="#" className="flex justify-center items-center gap-2 bg-secondary text-white font-bold px-3 py-2 rounded w-36">
+                        <img src="/google-play.png" alt="" width="20" height="30" />
+                        <span
+                            className="text-sm whitespace-nowrap"
+                        >
+                            Get App
+                        </span>
+                    </a>
+                    </div>
                     {/* side menu */}
-                    <span className={` flex lg:hidden justify-center items-center fixed top-[50%] left-0 bg-slate-700 h-24 px-1 rounded-se-xl rounded-ee-xl`} onClick={handleMobileSideBar}>
+                    <span className={` flex lg:hidden justify-center items-center fixed top-[50%] left-0 text-white bg-secondary h-24 px-1 rounded-se-xl rounded-ee-xl`} onClick={handleMobileSideBar}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4 ">
                             <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
                         </svg>
@@ -76,10 +91,13 @@ const QuizHeader = ({ menu_items }) => {
 
 
                 {/* mobile menu*/}
-                <aside className={`${toggleMobileMenu ? "flex" : "hidden"} flex-col justify-start items-start overflow-hidden bg-secondary text-menu font-semibold gap-4 fixed top-0 left-0 z-50 h-screen w-full`} >
-                    {/* close icon */}
+                <aside className={`${toggleMobileMenu ? "flex" : "hidden"} flex-col justify-start items-start overflow-hidden bg-primary text-menu font-semibold gap-4 fixed top-0 left-0 z-50 h-screen w-full`} >
                     <div className="w-full flex justify-between text-black p-2  " onClick={() => setToggleMobileMenu(false)}>
-                        <p className="text-xl font-extrabold text-white">{import.meta.env.VITE_APP_NAME}</p>
+                    <a href="/" className="flex justify-center">
+                        <img src="quizsavera_logo.png" alt="" srcset=""  height={450} />
+                    </a>
+
+                            {/* close icon */}
                         <p>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-8">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -108,9 +126,12 @@ const QuizHeader = ({ menu_items }) => {
 
                 {/* left bar */}
                 <aside className={`${toggleMobileSideBar ? "flex" : "hidden"} flex-col justify-start items-start overflow-hidden bg-primary gap-4 fixed top-0 left-0 z-50 h-screen w-full`} >
-                    {/* close icon */}
-                    <div className="w-full flex justify-between text-brand p-2  " onClick={() => setToggleMobileSideBar(false)}>
-                        <p className="text-xl font-extrabold text-brand">{import.meta.env.VITE_APP_NAME}</p>
+          
+                    <div className="w-full flex justify-between text-black p-2  " onClick={() => setToggleMobileSideBar(false)}>
+                    <a href="/" className="flex justify-center">
+                        <img src="quizsavera_logo.png" alt="" srcset=""  height={450} />
+                    </a>
+                              {/* close icon */}
                         <p>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-8">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -118,7 +139,7 @@ const QuizHeader = ({ menu_items }) => {
                         </p>
                     </div>
                     {/* left side bar content */}
-                    <div className="px-2 pb-6 flex mobile_menu_content_wrapper flex-col gap-4 w-full text-center overflow-y-auto">
+                    <div className="px-2 pb-6 flex mobile_menu_content_wrapper text-white flex-col gap-4 w-full text-center overflow-y-auto">
                         {/* menu content here */}
                     </div>
                 </aside>
@@ -129,7 +150,7 @@ const QuizHeader = ({ menu_items }) => {
                 <a href="/" className=" hover:text-blue-700 hover:underline ">Home</a>
 
                 {
-                    menu_items.length? menu_items.map((item, index) => {
+                    menu_items.length ? menu_items.map((item, index) => {
                         return (
                             <a href={`/quiz/${item?.id}`} key={item?.id} className=" hover:text-blue-700 hover:underline">{item?.name}</a>
                         )

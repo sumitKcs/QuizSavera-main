@@ -5,9 +5,10 @@ main {
     justify-content: center;
     gap: 1rem;
     /* padding: 1rem 4rem 0rem 4rem; */
-    background-color: white;
+    /* background-color: white; */
 
-    @apply w-full overflow-y-hidden;
+
+    @apply w-full overflow-y-hidden text-white;
 }
 
 .content_wrapper {

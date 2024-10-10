@@ -37,7 +37,6 @@ const SingleQuizQuestion = ({ questionData = {}, index, lang }) => {
         options_hin.push(questionData.option1_hin, questionData.option2_hin, questionData.option3_hin, questionData.option4_hin, questionData.option5_hin);
     }
 
-    console.log("Single quiz questionData", questionData?.option1_eng || questionData?.option1_hin);
 
 
     useEffect(() => {
@@ -82,7 +81,6 @@ const SingleQuizQuestion = ({ questionData = {}, index, lang }) => {
         textAlign: "left",
     };
 
-    console.log("questionData", questionData);
     return (
         <div
             itemProp="question"
@@ -92,7 +90,7 @@ const SingleQuizQuestion = ({ questionData = {}, index, lang }) => {
             className="quiz_wrapper"
         >
             {
-                question !== '' ? <h4
+                question ? <h4
                     itemProp="name"
                     style={{
                         marginBottom: ".4rem",
@@ -142,7 +140,8 @@ const SingleQuizQuestion = ({ questionData = {}, index, lang }) => {
             </ul>
 
             {
-                options.length && <div className="flex flex-col gap-2 mt-6 border-b-2 border-gray-300 pb-2">
+                options.length > 0 ?
+                 <div className="flex flex-col gap-2 mt-6 border-b-2 border-gray-300 pb-2">
                     {showAnswer && (
                         <div className="hidden showAns border rounded-xl p-2">
                             <span className=" font-bold">
@@ -211,7 +210,7 @@ const SingleQuizQuestion = ({ questionData = {}, index, lang }) => {
                             <img src="/warning.png" alt="report" width="25px" />
                         </button>
                     </div>
-                </div>
+                </div> : (<></>)
             }
 
 

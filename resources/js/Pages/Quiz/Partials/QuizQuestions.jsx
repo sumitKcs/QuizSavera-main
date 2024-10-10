@@ -40,7 +40,7 @@ const QuizQuestions = ({ questions = [], title = '', itemsPerPageVal=5 }) => {
                         defaultValue={'en'}
                         name="select_lang"
                         id="select_lang"
-                        className="w-32 px-2 py-0 rounded"
+                        className="w-32 px-2 py-0 rounded text-black "
                         onChange={(e) => {
                             // check if window has localStorage object
                             if (window.localStorage) {
@@ -57,7 +57,7 @@ const QuizQuestions = ({ questions = [], title = '', itemsPerPageVal=5 }) => {
                     </select>
                 </div>
                 {
-                    questions?.length > 0 ? questions.slice(firstQuestionIndex, firstQuestionIndex + itemsPerPage).map((question, index) => {
+                    questions?.length ? questions.slice(firstQuestionIndex, firstQuestionIndex + itemsPerPage).map((question, index) => {
                         return <SingleQuizQuestion key={index} questionData={question} index={questionNumber++} lang={lang} />
                     }) : (
                         Array(10).fill(0).map((item, index) => {
