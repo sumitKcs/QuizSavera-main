@@ -7,10 +7,10 @@
 
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
-    <link rel="preload" as="image"href="/fonts/poppins-v21-latin-ext-300.woff2">
-    <link rel="preload" as="image"href="/fonts/poppins-v21-latin-300.woff2">
-    <link rel="preload" as="image"href="/quizsavera_logo.webp">
-    <link rel="preload" as="image"href="/google-play.webp">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/poppins-v21-latin-ext-300.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/poppins-v21-latin-300.woff2">
+    <link rel="preload" as="image" type="image/webp" href="/quizsavera_logo.webp">
+    <link rel="preload" as="image" type="image/webp" href="/google-play.webp">
 
     <!-- Scripts -->
     @routes

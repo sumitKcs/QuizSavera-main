@@ -1,4 +1,3 @@
-import "../../../css/info.css";
 import QuizQuestions from "./Partials/QuizQuestions";
 import AppLayout from "@/Layouts/AppLayout";
 import { useEffect, useState } from "react";
@@ -47,7 +46,7 @@ export default function Questions({cat_name, cat_id}) {
     return (
         <>
              <AppLayout title={title} description={description} keywords={keywords} leftBar={true} rightBar={false} carousel={false}>
-                <QuizQuestions questions={questions} title={quiz_title} itemsPerPageVal={10} />
+                <QuizQuestions questions={questions} title={quiz_title} itemsPerPageVal={3} />
             </AppLayout>
         </>
     );

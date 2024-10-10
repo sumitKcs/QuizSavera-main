@@ -1,4 +1,3 @@
-import "../../../css/info.css";
 import BlogCard from "./Partials/BlogCard";
 import AppLayout from "@/Layouts/AppLayout";
 
