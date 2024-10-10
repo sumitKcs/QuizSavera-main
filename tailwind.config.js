@@ -34,7 +34,7 @@ export default {
         'footer-hover': "#000000",
         'footer-active': "#000000",
         'footer-active-hover': "#000000",
-        'footer-title': "#000000",
+        'footer-title': "#ffffff",
         'footer-title-hover': "#000000",
         'footer-title-active': "#000000",
         'footer-title-active-hover': "#000000",

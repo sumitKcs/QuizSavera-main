@@ -11,6 +11,9 @@ import classNames from 'classnames';
 import { twMerge } from 'tailwind-merge';
 import Tailwind from 'primereact/passthrough/tailwind';
 import { useHomeLayoutStore } from "@/store/homeLayout";
+import { FaFacebookF } from "react-icons/fa6";
+import { FaTelegramPlane, FaWhatsapp, FaYoutube } from "react-icons/fa";
+
 
 const PaginationStyle = {
     paginator: {
@@ -236,7 +239,7 @@ const AppLayout = ({
             postData();
         }
 
-     
+
     }, []);
 
     const handleLeftbarSearch = (search) => {
@@ -262,6 +265,15 @@ const AppLayout = ({
             </Head>
             <QuizHeader menu_items={menu_items} />
             {alert && <QuizAlert items={notifications} />}
+            <div className="flex flex-col justify-center items-center w-full gap-2 pb-2">
+                <p className="text-white font-extrabold">Join our groups for latest updates </p>
+                <div className="flex justify-start gap-2  text-white text-2xl">
+                    <a href="#"><FaFacebookF /></a>
+                    <a href="#"> <FaTelegramPlane /></a>
+                    <a href="#"> <FaWhatsapp /></a>
+                    <a href="#"> <FaYoutube /></a>
+                </div>
+            </div>
             <main className="">
                 {carousel && <QuizCarousel />}
 

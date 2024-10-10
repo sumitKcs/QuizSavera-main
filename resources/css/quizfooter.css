@@ -1,12 +1,20 @@
 .footer {
-    @apply w-full  h-fit bg-tertiary flex flex-col justify-between items-center mt-4 py-2 gap-8;
+    @apply w-full  h-fit bg-tertiary flex flex-col justify-start items-center mt-4 py-2 gap-8;
 }
 
 .footer_col_container {
     width: 100%;
     justify-content: space-between;
     justify-items: center;
-    @apply grid grid-cols-2 justify-start items-start lg:flex flex-wrap gap-10 px-5 py-5 lg:justify-around ;
+    @apply flex flex-col lg:flex-row flex-wrap gap-10 px-5 py-5 lg:justify-start ;
+}
+
+.footer_about_container{
+    @apply  overflow-hidden;
+}
+
+.footer_nav_container {
+    @apply grid grid-cols-2 gap-4 lg:flex flex-wrap flex-1 justify-between;
 }
 
 .footer ul {
@@ -18,8 +26,13 @@
 
     @apply w-full lg:w-fit ;
 
+    li {
+        @apply pt-2
+    }
+
 
 }
+
 
 .footer_col_heading {
     @apply text-footer-title font-bold mb-1;

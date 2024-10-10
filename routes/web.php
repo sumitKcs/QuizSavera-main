@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PrivacyPolicy;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\QuizController;
@@ -39,6 +40,7 @@ Route::get('/{cat_name}/{cat_id}/mock', [QuizController::class, 'play'])->name('
 Route::get('/{cat_name}/{cat_id}/analytics', [QuizController::class, 'analytics'])->name('quiz.analytics');
 Route::get('/blog/{id}', [BlogController::class, 'content'])->name('blog.content');
 // Route::get('/longanswer', [QuizController::class, 'longAnswer'])->name('longAnswer.index');
+Route::get('/privacy-policy', [PrivacyPolicy::class, 'index'])->name('privacyPolicy.content');
 
 
 
