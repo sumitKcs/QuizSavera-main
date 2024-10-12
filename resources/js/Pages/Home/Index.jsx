@@ -2,8 +2,12 @@
 import AppLayout from "@/Layouts/AppLayout";
 import VerticalCard from "./Partials/VerticalCard";
 import { useEffect, useState } from "react";
+import {useHomeLayoutStore} from "@/store/homeLayout";
+
 
 export default function Index() {
+    const { homeLayout, setMenu, setNotifications, setSidebars, setFooter } = useHomeLayoutStore();
+    const { menu_items, notifications, sidebars, footer } = homeLayout
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -33,6 +37,13 @@ export default function Index() {
           setViews(result.items);
           setContent(result.content);
           setRecommendedContent(result.recommendedContent);
+          // if menu_items, notifications, sidebars, footer are empty, then set them to result values
+          if (menu_items.length == 0) {
+            setMenu(result.menuItems);
+            setNotifications(result.notificationItems);
+            setSidebars(result.sidebars);
+            setFooter(result.footer);
+          }
         };
     
         postData();
@@ -42,7 +53,7 @@ export default function Index() {
 
     return (
         <>
-            <AppLayout title={title} description={description} keywords={keywords} leftBar={true} rightBar={false} carousel={false}>
+            <AppLayout title={title} description={description} keywords={keywords} leftBar={true} rightBar={false} carousel={false} >
                 <div div className="flex flex-col justify-start items-center w-full gap-4">
                     {/* category views */}
                     {views && views.length > 0 ? views.map((view, index) => {

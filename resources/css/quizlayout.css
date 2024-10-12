@@ -27,7 +27,7 @@ main {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     overflow-y: auto;
-    @apply hidden lg:flex overflow-auto;
+    @apply hidden lg:flex flex-col gap-4 overflow-auto;
 }
 
 .rightbar {

@@ -82,7 +82,7 @@ const QuizHeader = ({ menu_items }) => {
                     </a>
                     </div>
                     {/* side menu */}
-                    <span className={` flex lg:hidden justify-center items-center fixed top-[50%] left-0 text-white bg-secondary h-24 px-1 rounded-se-xl rounded-ee-xl`} onClick={handleMobileSideBar}>
+                    <span className={` flex lg:hidden justify-center items-center fixed top-[50%] left-0 z-50 text-white bg-secondary h-24 px-1 rounded-se-xl rounded-ee-xl`} onClick={handleMobileSideBar}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-4 ">
                             <path strokeLinecap="round" strokeLinejoin="round" d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5" />
                         </svg>

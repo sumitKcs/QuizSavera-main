@@ -6,7 +6,7 @@ import { Link } from '@inertiajs/react';
 
 
 export default function Categories({cat_name, cat_id}) {
-    const { homeLayout } = useHomeLayoutStore();
+    const { homeLayout, setMenu, setNotifications, setSidebars, setFooter } = useHomeLayoutStore();
     const { menu_items, notifications, sidebars, footer } = homeLayout
 
 
@@ -40,6 +40,14 @@ export default function Categories({cat_name, cat_id}) {
           setKeywords(result.keywords);
           setContent(result.content);
           setRecommendedContent(result.recommended_content);
+
+           // if menu_items, notifications, sidebars, footer are empty, then set them to result values
+           if (menu_items.length == 0) {
+            setMenu(result.menuItems);
+            setNotifications(result.notificationItems);
+            setSidebars(result.sidebars);
+            setFooter(result.footer);
+          }
 
         };
     

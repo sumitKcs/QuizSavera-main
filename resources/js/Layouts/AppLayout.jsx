@@ -1,14 +1,14 @@
 import "../../css/quizlayout.css";
 import { Head } from "@inertiajs/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense, lazy } from "react";
 import QuizLink from "@/Components/QuizLink";
-import QuizFooter from "@/Components/QuizFooter";
 import QuizAlert from "@/Components/QuizAlert";
 import QuizHeader from "@/Components/QuizHeader";
 import { PrimeReactProvider } from "primereact/api";
 import { twMerge } from 'tailwind-merge';
 import Tailwind from 'primereact/passthrough/tailwind';
 import { useHomeLayoutStore } from "@/store/homeLayout";
+const QuizFooter = lazy(() => import('@/Components/QuizFooter'));
 
 
 
@@ -21,16 +21,17 @@ const parseHtmlToText = (htmlContent) => {
 
 const AppLayout = ({
     children,
+    alert = true,
+    leftBar = true,
+    rightBar = true,
     title,
     description,
     keywords,
-    leftBar = true,
-    rightBar = true,
-    carousel = true,
-    alert = true,
+    
 }) => {
     const { homeLayout, setMenu, setNotifications, setSidebars, setFooter } = useHomeLayoutStore();
     const { menu_items, notifications, sidebars, footer } = homeLayout
+
     const [leftbarSearch, setLeftbarSearch] = useState('');
 
 
@@ -88,7 +89,7 @@ const AppLayout = ({
                     {/* facebook */}
                     <a href="#">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35px" height="35px" viewBox="0,0,256,256">
-                            <g fill="#ffffff" fillRule="nonzero" stroke="none" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none" fontSize="none" text-anchor="none" style={{ mixBlendMode: 'normal' }}><g transform="scale(10.66667,10.66667)"><path d="M12,2c-5.523,0 -10,4.477 -10,10c0,5.013 3.693,9.153 8.505,9.876v-7.226h-2.474v-2.629h2.474v-1.749c0,-2.896 1.411,-4.167 3.818,-4.167c1.153,0 1.762,0.085 2.051,0.124v2.294h-1.642c-1.022,0 -1.379,0.969 -1.379,2.061v1.437h2.995l-0.406,2.629h-2.588v7.247c4.881,-0.661 8.646,-4.835 8.646,-9.897c0,-5.523 -4.477,-10 -10,-10z"></path></g></g>
+                            <g fill="#ffffff" fillRule="nonzero" stroke="none" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="miter" strokeMiterlimit="10" strokeDasharray="" strokeDashoffset="0" fontFamily="none" fontWeight="none" fontSize="none" textAnchor="none" style={{ mixBlendMode: 'normal' }}><g transform="scale(10.66667,10.66667)"><path d="M12,2c-5.523,0 -10,4.477 -10,10c0,5.013 3.693,9.153 8.505,9.876v-7.226h-2.474v-2.629h2.474v-1.749c0,-2.896 1.411,-4.167 3.818,-4.167c1.153,0 1.762,0.085 2.051,0.124v2.294h-1.642c-1.022,0 -1.379,0.969 -1.379,2.061v1.437h2.995l-0.406,2.629h-2.588v7.247c4.881,-0.661 8.646,-4.835 8.646,-9.897c0,-5.523 -4.477,-10 -10,-10z"></path></g></g>
                         </svg>
                     </a>
                     {/* telegram */}
@@ -114,9 +115,9 @@ const AppLayout = ({
             <main className="">
 
                 <div className="content_wrapper">
-                    {sidebars?.leftbar.length > 0 ? (
+                    {sidebars?.leftbar.length > 0 && leftBar ? (
                         <aside
-                            className="leftbar flex flex-col gap-4">
+                            className="leftbar">
                             <div className="w-full">
                                 <input type="text" className="rounded w-full text-black p-1 px-2" placeholder="search.."
                                     onChange={(e) => {
@@ -134,7 +135,7 @@ const AppLayout = ({
                         </aside>
                     ) : (
                         <aside
-                            className="leftbar flex flex-col gap-4">
+                            className="leftbar">
                             <div className="w-full">
                                 <input type="text" className="rounded w-full text-black bg-slate-800 p-1 px-2" placeholder="search.."
                                     onChange={(e) => {
@@ -170,7 +171,9 @@ const AppLayout = ({
                 </div>
                 {/* <QuizQuickNav /> */}
             </main>
+            <Suspense fallback={<div>Loading...</div>}>
             <QuizFooter items={footer} />
+            </Suspense>
         </PrimeReactProvider>
     );
 };
