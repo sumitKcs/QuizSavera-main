@@ -90,7 +90,7 @@ const QuizHeader = ({ menu_items }) => {
                 <aside className={`${toggleMobileMenu ? "flex" : "hidden"} flex-col justify-start items-start overflow-hidden bg-primary text-menu font-semibold gap-4 fixed top-0 left-0 z-50 h-screen w-full`} >
                     <div className="w-full flex justify-between text-black p-2  " onClick={() => setToggleMobileMenu(false)}>
                     <a href="/" className="flex justify-center">
-                        <img src="quizsavera_logo.webp" alt="" srcset=""  height={450} />
+                        <img src="/quizsavera_logo.webp" alt="" srcset=""  height={450} />
                     </a>
 
                             {/* close icon */}
