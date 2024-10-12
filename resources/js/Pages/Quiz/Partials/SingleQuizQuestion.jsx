@@ -89,7 +89,7 @@ const SingleQuizQuestion = ({ questionData = {}, index, lang }) => {
             className="quiz_wrapper"
         >
             {
-                question ? <h4
+                question ? <p
                     itemProp="name"
                     style={{
                         marginBottom: ".4rem",
@@ -98,7 +98,7 @@ const SingleQuizQuestion = ({ questionData = {}, index, lang }) => {
                     }}
                 >
                     {index + 1}. {question}
-                </h4> : <div className="w-full bg-gray-300 animate-pulse h-8 rounded-lg"></div>
+                </p> : <div className="w-full bg-gray-300 animate-pulse h-8 rounded-lg"></div>
             }
 
             <ul style={listStyle}>

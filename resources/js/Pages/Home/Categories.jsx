@@ -71,13 +71,15 @@ export default function Categories({cat_name, cat_id}) {
                                 return (
                                     <>
                                         {/* category name */}
-                                        <h2 className="text-lg font-semibold text-center w-full pt-5">{isCategory == 0 ? view.mainItemName : title}</h2>
+                                        <h6 className="text-lg font-semibold text-center w-full pt-5">{isCategory == 0 ? view.mainItemName : title}</h6>
                                         {/* category description */}
-                                        <p className="text-sm text-center w-full">{isCategory == 0 ? keywords : ''}</p>
+                                        {
+                                            description && description.length > 0 &&
+                                            <p className="w-full p-5" dangerouslySetInnerHTML={{ __html: description }}></p>
+                                        }
                                         <div key={view.sid} className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 w-full gap-4">
                                             {
                                                 view.subItems.map((subitem) => {
-                                                    console.log("rendering vertical card");
                                                     return (
                                                         <VerticalCard key={subitem.sid} title={subitem.text1st} categoryId={subitem.mid} items={subitem.subItems} limit={2} />
                                                     )
@@ -88,11 +90,10 @@ export default function Categories({cat_name, cat_id}) {
                                 )
                             }
                             if (view.mainItemType == 'two_columns_tabular_view_level_2') {
-                                const description_markup = { __html: description };
                                 return (
                                     <>
                                       {/* category name */}
-                                      <h2 className="text-lg font-semibold text-center w-full pt-5">{isCategory == 0 ? view.mainItemName : title}</h2>
+                                      <h6 className="font-semibold text-center w-full pt-5">{isCategory == 0 ? view.mainItemName : title}</h6>
                                         {/* category description */}
                                         {
                                             description && description.length > 0 &&
@@ -114,7 +115,7 @@ export default function Categories({cat_name, cat_id}) {
                                                                                     const contentType = subsubitem.contentType ? subsubitem.contentType.toString().toLowerCase() : "";
                                                                                     return (
                                                                                         <li>
-                                                                                            <Link href={`/${subsubitem?.text1st.toLowerCase()}/${subsubitem?.sid}${contentType ? `/${contentType}` : ""}`} key={subsubitem.sid} className="underline text-orange-500  font-bold pr-3 hover:text-blue-600 hover:font-extrabold">{subsubitem.text1st}</Link>
+                                                                                            <Link href={`/${subsubitem?.text1st.toLowerCase()}/${subsubitem?.sid}${contentType ? `/${contentType}` : ""}`} key={subsubitem.sid} className="underline text-orange-500  font-extrabold pr-3 hover:text-blue-600 hover:font-extrabold">{subsubitem.text1st}</Link>
                                                                                         </li>
                                                                                     )
                                                                                 })

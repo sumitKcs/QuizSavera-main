@@ -23,9 +23,9 @@ const QuizQuestions = ({ questions = [], title = '', itemsPerPageVal=5 }) => {
     return (
         <div className="quiz_question_container shadow-lg border">
             {
-                title !== '' ? <div className="qq_header">
+                title !== '' ? <h6 className="qq_header">
                 {title}
-            </div> : <div className="w-full bg-gray-300 animate-pulse h-8 rounded-lg"></div>
+            </h6> : <div className="w-full bg-gray-300 animate-pulse h-8 rounded-lg"></div>
             }
             <div className="flex flex-col gap-5 w-full">
                 {/* select hindi and english language */}

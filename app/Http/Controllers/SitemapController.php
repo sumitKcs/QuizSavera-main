@@ -16,7 +16,7 @@ class SitemapController extends Controller
          */
          // log the process has been started
         Log::info('Sitemap generation process started');
-        $process = new Process(['node', base_path('scripts/generate_sitemap.js')]);
+        $process = new Process([env('NODE_PATH'), base_path('scripts/generate_sitemap.js')]);
         $process->setTimeout(1200); // Set the timeout to 12000 seconds (20 minutes)
 
         try {

@@ -13,9 +13,6 @@
     <link rel="preload" as="image" type="image/webp" href="/google-play.webp">
 
 
-     <!-- Include CSS -->
-     @vite('resources/css/app.css')
-
     <!-- Scripts -->
     @routes
     @viteReactRefresh

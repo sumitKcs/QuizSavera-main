@@ -15,7 +15,7 @@ const QuizFooter = ({ items }) => {
                             <img src="/quizsavera_logo.webp" alt="" className="absolute left-[-1.8rem] top-0 z-10" />
                         </li>
                         <li className="footer_col_heading">
-                            <h1>About QuizSavera</h1>
+                            <h6>About QuizSavera</h6>
                         </li>
                         <li className="w-full lg:max-w-96">
                             <p className="text-white w-full">QuizSavera is one of India’s leading Government exam preparation platforms. Our mission is to provide the best online learning platform for all government job aspirants.</p>
@@ -57,7 +57,7 @@ const QuizFooter = ({ items }) => {
                             return (
                                 <ul key={index}>
                                     <li>
-                                        <h3 className="footer_col_heading">{item.name}</h3>
+                                        <h6 className="footer_col_heading">{item.name}</h6>
                                     </li>
                                     {
                                         item.contents.map((item, index) => {
@@ -82,7 +82,7 @@ const QuizFooter = ({ items }) => {
                 <a href="/dmca" className="footer_nav2_link">DMCA</a>
             </div>
             <div className="footer_copyright">
-                Copyright &copy; {currentYear} - {import.meta.env.VITE_APP_NAME}
+                Copyright &copy; {currentYear} - <a href="/" className="hover:text-blue-600 hover:font-extrabold">{import.meta.env.VITE_APP_NAME}</a>
             </div>
         </footer>
     );

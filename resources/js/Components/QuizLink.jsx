@@ -4,9 +4,9 @@ const QuizLink = ({ item = { name: '', contents: [] } }) => {
     return (
         <div className="flex flex-col items-start w-full">
             {item.name ?
-                <h4 className="quiz_link_header ">
+                <span className="quiz_link_header ">
                     {item.name}
-                </h4> :
+                </span> :
                 <h4 className="quiz_link_header w-full h-8 animate-pulse rounded-lg"></h4>
             }
             <nav className="navbar">
@@ -51,7 +51,7 @@ const QuizLink = ({ item = { name: '', contents: [] } }) => {
                                     </svg>
                                 </div>
                                 <a href={item?.link} className="navbar_link">
-                                    {item?.name}
+                                {item?.name}
                                 </a>
                             </span>
                         );

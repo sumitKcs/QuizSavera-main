@@ -17,7 +17,7 @@ export default {
         primary: "#000000",
         secondary: "#8a88ad",
         tertiary: "#000000",
-        brand: "#2aac75",
+        accent: '#FB923C',
         'menu': "#ffffff",
         'menu-hover': "#000000",
         'menu-active': "#000000",

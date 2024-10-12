@@ -71,14 +71,10 @@ const QuizHeader = ({ menu_items }) => {
                     </a>
                    </div>
                     {/* download app button */}
-                    <div className=" lg:col-start-3 hidden lg:flex justify-end items-center gap-2">
-                    <a href="#" className="flex justify-center items-center gap-2 bg-secondary text-white font-bold px-3 py-2 rounded w-36">
-                        <img src="/google-play.webp" alt="" width="20" height="30" fetchPriority="high" loading="eager"  />
-                        <span
-                            className="text-sm whitespace-nowrap"
-                        >
-                            Get App
-                        </span>
+                    <div className=" lg:col-start-4 hidden lg:flex justify-center items-center gap-2 bg-secondary w-fit rounded py-1 px-4 shadow-inner">
+                    <img src="/google-play.webp" alt="" width="20" height="30" fetchPriority="high" loading="eager"  />
+                    <a href="https://playstore.com?app=com.quizsavera.app" className="text-white font-bold whitespace-nowrap">
+                        Get App
                     </a>
                     </div>
                     {/* side menu */}
@@ -116,7 +112,7 @@ const QuizHeader = ({ menu_items }) => {
                             }) : (
                                 Array(12).fill(0).map((item, index) => {
                                     return (
-                                        <span className="w-full hover:text-blue-700 hover:underline w-48 h-3 bg-green-300 rounded-lg animate-pulse"></span>
+                                        <span className=" hover:text-blue-700 hover:underline w-48 h-3 bg-green-300 rounded-lg animate-pulse"></span>
                                     )
                                 })
                             )
@@ -145,7 +141,7 @@ const QuizHeader = ({ menu_items }) => {
                 </aside>
             </header>
             {/* menu items */}
-            <nav className={`bg-secondary hidden md:flex justify-start lg:justify-center items-center flex-wrap gap-4 px-4 py-2 md:text-[16px] text-xs  text-menu font-semibold overflow-y-auto`}>
+            <nav className={`bg-secondary hidden md:flex justify-start lg:justify-center items-center flex-wrap gap-4 px-4 py-2   text-menu font-semibold overflow-y-auto`}>
 
                 <a href="/" className=" hover:text-blue-700 hover:underline ">Home</a>
 
@@ -162,15 +158,6 @@ const QuizHeader = ({ menu_items }) => {
                         })
                     )
                 }
-
-                {/* <a href="#" className="flex justify-center items-center gap-2 border border-black bg-[#4d4c7d] p-1">
-    <img src="/google-play.webp" alt="" width="20" height="30" />
-    <span
-        className="text-sm"
-    >
-        Get App
-    </span>
-</a> */}
             </nav>
         </>
     );

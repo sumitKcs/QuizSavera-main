@@ -4,7 +4,7 @@
 
 }
 .navbar {
-    @apply flex flex-col items-start gap-4 w-full px-1 py-2 text-sm;
+    @apply flex flex-col items-start gap-4 w-full px-1 py-2;
 }
 
 .navbar_link {

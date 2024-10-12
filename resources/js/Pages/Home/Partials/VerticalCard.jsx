@@ -11,7 +11,7 @@ const VerticalCard = ({ title='', items=[], limit=5, categoryId=null }) => {
         <>
              <div className="flex flex-col justify-between items-center h-fit w-full verticalcard_wrapper">
                         {
-                            title ? <div className="bg-secondary w-full text-center py-2 text-white font-bold vaerticlcard_title">{title}</div> :
+                            title ? <h6 className="bg-secondary w-full text-center py-2 text-white font-extrabold verticlcard_title">{title}</h6> :
                             <div className="bg-secondary w-full h-10 text-center py-2 font-bold text-secondary"></div>
                         }
                         <div className="flex flex-col justify-center items-center p-4 gap-8 size-full text-center">

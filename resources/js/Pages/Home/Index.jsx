@@ -66,13 +66,15 @@ export default function Index() {
                                 return (
                                     <>
                                         {/* category name */}
-                                        <h2 className="text-lg font-semibold text-center w-full pt-5">{isCategory == 0 ? view.mainItemName : title}</h2>
+                                        <h6 className="font-semibold text-center w-full pt-5">{isCategory == 0 ? view.mainItemName : title}</h6>
                                         {/* category description */}
-                                        <p className="text-sm text-center w-full">{isCategory == 0 ? keywords : ''}</p>
+                                        {
+                                            description && description.length > 0 &&
+                                            <p className="w-full p-5" dangerouslySetInnerHTML={{ __html: description }}></p>
+                                        }
                                         <div key={view.sid} className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 w-full gap-4">
                                             {
                                                 view.subItems.map((subitem) => {
-                                                    console.log("rendering vertical card");
                                                     return (
                                                         <VerticalCard key={subitem.sid} title={subitem.text1st} categoryId={subitem.mid} items={subitem.subItems} limit={2} />
                                                     )
@@ -87,7 +89,7 @@ export default function Index() {
                                 return (
                                     <>
                                       {/* category name */}
-                                      <h2 className="text-lg font-semibold text-center w-full pt-5">{isCategory == 0 ? view.mainItemName : title}</h2>
+                                      <h2 className="font-semibold text-center w-full pt-5">{isCategory == 0 ? view.mainItemName : title}</h2>
                                         {/* category description */}
                                         {
                                             description && description.length > 0 &&
@@ -239,7 +241,7 @@ export default function Index() {
                         return (
                             <>
                                 {/* category name */}
-                                <h2 className="text-lg font-semibold text-center w-full h-10 bg-gray-300 pt-5 animate-pulse rounded-lg"></h2>
+                                <h2 className="font-semibold text-center w-full h-10 bg-gray-300 pt-5 animate-pulse rounded-lg"></h2>
                                 <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-3 w-full gap-4">
                                     {
                                         Array(6).fill(0).map((item, index) => {

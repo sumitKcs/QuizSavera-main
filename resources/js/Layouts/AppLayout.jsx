@@ -84,7 +84,7 @@ const AppLayout = ({
             <QuizHeader menu_items={menu_items} />
             {alert && <QuizAlert items={notifications} />}
             <div className="flex flex-col justify-center items-center w-full gap-2 pb-2">
-                <p className="text-white font-extrabold">Join our groups for latest updates </p>
+                <h6 className="text-white font-extrabold">Join our groups for latest updates </h6>
                 <div className="flex justify-start gap-2  text-white">
                     {/* facebook */}
                     <a href="#">
