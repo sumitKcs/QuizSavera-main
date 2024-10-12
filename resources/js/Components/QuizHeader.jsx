@@ -101,7 +101,7 @@ const QuizHeader = ({ menu_items }) => {
                         </p>
                     </div>
                     {/* left side bar content */}
-                    <div className="px-2 pb-6 flex flex-col gap-4 w-full text-center overflow-y-auto">
+                    <div className="px-2 pb-6 flex flex-col items-center gap-4 w-full text-center overflow-y-auto">
                         <a href="/">Home</a>
 
                         {
@@ -112,7 +112,7 @@ const QuizHeader = ({ menu_items }) => {
                             }) : (
                                 Array(12).fill(0).map((item, index) => {
                                     return (
-                                        <span className=" hover:text-blue-700 hover:underline w-48 h-3 bg-green-300 rounded-lg animate-pulse"></span>
+                                        <span className=" hover:text-blue-700 hover:underline w-48 h-3 bg-gray-300 rounded-lg animate-pulse"></span>
                                     )
                                 })
                             )
@@ -125,7 +125,7 @@ const QuizHeader = ({ menu_items }) => {
           
                     <div className="w-full flex justify-between text-black p-2  " onClick={() => setToggleMobileSideBar(false)}>
                     <a href="/" className="flex justify-center">
-                        <img src="quizsavera_logo.webp" alt="" srcset=""  height={450} />
+                        <img src="/quizsavera_logo.webp" alt="" srcset=""  height={450} />
                     </a>
                               {/* close icon */}
                         <p>
