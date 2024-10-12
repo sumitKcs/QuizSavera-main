@@ -27,7 +27,7 @@ class SitemapController extends Controller
             Log::info('Sitemap generation process completed');
             // If the process was successful, return a success response
             return response()->json([
-                'status' => 'success',
+                'success' => 'false',
                 'message' => 'Sitemap generated successfully',
                 'output' => $process->getOutput(),
                 'error' => $process->getErrorOutput(),
@@ -38,7 +38,7 @@ class SitemapController extends Controller
             Log::error('Sitemap generation process failed: '.$exception->getMessage());
             // If the process failed, return an error response
             return response()->json([
-                'status' => 'error',
+                'success' => 'false',
                 'message' => 'Sitemap generation failed',
                 'error' => $exception->getMessage(),
             ], 500);

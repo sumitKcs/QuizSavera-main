@@ -17,12 +17,15 @@ async function crawl(url, depth, parentUrl = null) {
     console.log(`Crawling: ${url}`);
     visitedUrls.add(url);
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        executablePath: '/usr/bin/chromium', // Adjust this path as needed
+        protocolTimeout: 600000, // Increase protocol timeout to 600 seconds = 10mins
+    });
     const page = await browser.newPage();
-    await page.goto(url, { waitUntil: 'networkidle2' });
+    await page.goto(url, { waitUntil: 'networkidle2', timeout: 600000 }); // Set a timeout of 600 seconds = 10mins
 
     // Wait for the page to fully render
-    // await new Promise(resolve => setTimeout(resolve, 100)); // Adjust the timeout as needed
+    // await new Promise(resolve => setTimeout(resolve, 1000)); // Adjust the timeout as needed
 
     const links = await page.evaluate(() => {
         const urls = document.querySelectorAll('a');
